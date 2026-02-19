@@ -620,7 +620,7 @@ body {
 /* Employee row: identity | display-col | rate | hours | subtotal | remove */
 .th-emp-row {
     display: grid;
-    grid-template-columns: minmax(180px, 1.2fr) minmax(180px, 1.8fr) 120px 110px 110px 36px;
+    grid-template-columns: minmax(240px, 1.6fr) minmax(280px, 1.8fr) 120px 110px 110px 36px;
     align-items: start;
     gap: 12px;
     padding: 12px 20px;

@@ -1258,14 +1258,16 @@ function renderStep3(container, data) {
                 <div class="th-emp-identity">
                     <div class="th-emp-avatar" style="background:#E5E7EB;color:#6B7280;">${initials}</div>
                     <div class="th-emp-name-block">
-                        <span class="th-emp-name">${emp ? emp.name : '—'}</span>
+                        <select class="form-select th-emp-select" data-entry-idx="${entryIdx}">
+                            ${empOptionsForCell(entry.cellId, entry.employeeId)}
+                        </select>
                         <span class="th-emp-meta">${entry.cellId} · ${senLabel}</span>
                     </div>
                 </div>
                 <div class="th-display-col">
                     <select class="form-select th-display-select" data-entry-idx="${entryIdx}">
                         <option value="name" ${!isService ? 'selected' : ''}>Display on invoice: Name</option>
-                        <option value="service" ${isService ? 'selected' : ''}>Display: Service</option>
+                        <option value="service" ${isService ? 'selected' : ''}>Display on invoice: Service</option>
                     </select>
                     ${serviceDropdown}
                 </div>
@@ -1373,6 +1375,21 @@ function renderStep3(container, data) {
             btn.addEventListener('click', () => {
                 const idx = parseInt(btn.dataset.entryIdx);
                 data.teamEntries.splice(idx, 1);
+                render();
+            });
+        });
+
+        // Employee select — update employeeId and rate
+        container.querySelectorAll('.th-emp-select').forEach(sel => {
+            sel.addEventListener('change', () => {
+                const idx = parseInt(sel.dataset.entryIdx);
+                const entry = data.teamEntries[idx];
+                const emp = EMPLOYEES_DB.find(e => e.id === sel.value);
+                entry.employeeId = sel.value;
+                if (emp) {
+                    const rc = CELL_RATE_CARDS[entry.cellId];
+                    entry.rate = rc ? (rc.rates[emp.seniority] || 0) : 0;
+                }
                 render();
             });
         });
