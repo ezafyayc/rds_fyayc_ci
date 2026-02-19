@@ -373,6 +373,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mode Switcher
     initModeSwitcher();
 
+    // Sidebar toggle
+    initSidebarToggle();
+
     // Wizard header scroll behavior
     initWizardHeaderScroll();
 });
@@ -394,6 +397,24 @@ function initWizardHeaderScroll() {
         } else {
             stickyHeader.classList.remove('scrolled');
         }
+    });
+}
+
+// ──────────────────────────────────────────
+// SIDEBAR TOGGLE
+// ──────────────────────────────────────────
+function initSidebarToggle() {
+    const sidebar = document.querySelector('.sidebar');
+    const btn = $('#sidebar-toggle');
+    if (!sidebar || !btn) return;
+
+    if (localStorage.getItem('sidebar-collapsed') === 'true') {
+        sidebar.classList.add('collapsed');
+    }
+
+    btn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebar-collapsed', sidebar.classList.contains('collapsed'));
     });
 }
 
@@ -571,7 +592,7 @@ function showInvoiceDetail(invoiceId) {
         <div class="invoice-detail-grid">
             <div>
                 <div class="detail-section">
-                    <h3>📋 Project Details</h3>
+                    <h3>Project Details</h3>
                     <div class="review-row"><span class="label">Customer</span><span class="value">${inv.client.name}</span></div>
                     <div class="review-row"><span class="label">Contact</span><span class="value">${inv.client.contact}</span></div>
                     <div class="review-row"><span class="label">Date</span><span class="value">${new Date(inv.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span></div>
@@ -580,7 +601,7 @@ function showInvoiceDetail(invoiceId) {
                     </span></div>
                 </div>
                 <div class="detail-section">
-                    <h3>👥 Team Breakdown</h3>
+                    <h3>Team Breakdown</h3>
                     <table class="review-team-table">
                         <thead><tr><th>Employee</th><th>Cell</th><th>Seniority</th><th>Hours</th><th>Rate</th><th>Subtotal</th></tr></thead>
                         <tbody>${teamRows || '<tr><td colspan="6" style="text-align:center;color:var(--text-tertiary);">No team data available</td></tr>'}</tbody>
@@ -589,7 +610,7 @@ function showInvoiceDetail(invoiceId) {
             </div>
             <div>
                 <div class="summary-card">
-                    <h3>💰 Invoice Total</h3>
+                    <h3>Invoice Total</h3>
                     <div class="summary-total">
                         <div class="amount">${formatCurrency(inv.amount)}</div>
                         <div class="label">Total Amount</div>
@@ -1633,7 +1654,7 @@ function renderStep4_unused(container, data) {
             <p class="step-desc">Configure tax, discounts, surcharges, and cross-cell fees for this invoice.</p>
             <div class="adjustments-grid">
                 <div class="adjustment-card">
-                    <h3>🏛️ Tax Configuration</h3>
+                    <h3>Tax Configuration</h3>
                     <div class="toggle-row">
                         <div>
                             <span class="toggle-label">Apply Tax</span>
@@ -1657,7 +1678,7 @@ function renderStep4_unused(container, data) {
                 </div>
 
                 <div class="adjustment-card">
-                    <h3>💰 Discounts</h3>
+                    <h3>Discounts</h3>
                     <div class="form-group">
                         <label class="form-label">Discount Type</label>
                         <select class="form-select" id="w-discount-type">
@@ -1673,7 +1694,7 @@ function renderStep4_unused(container, data) {
                 </div>
 
                 <div class="adjustment-card">
-                    <h3>⚡ Surcharges</h3>
+                    <h3>Surcharges</h3>
                     <div class="toggle-row">
                         <div>
                             <span class="toggle-label">Rush Delivery (+15%)</span>
@@ -1697,7 +1718,7 @@ function renderStep4_unused(container, data) {
                 </div>
 
                 <div class="adjustment-card">
-                    <h3>📝 Additional</h3>
+                    <h3>Additional</h3>
                     <div class="form-group">
                         <label class="form-label">Payment Terms</label>
                         <select class="form-select" id="w-payment-terms">
@@ -1716,7 +1737,7 @@ function renderStep4_unused(container, data) {
             </div>
 
             <div class="adjustment-card mt-4" style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;">
-                <h3>📊 Live Cost Breakdown</h3>
+                <h3>Live Cost Breakdown</h3>
                 <div class="breakdown-mini">
                     <div class="breakdown-row">
                         <span class="label">Subtotal (billable hours)</span>
