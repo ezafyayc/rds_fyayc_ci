@@ -139,9 +139,23 @@ body {
 }
 
 .nav-item.active {
-    background: var(--accent-bg);
+    background: transparent;
     color: var(--accent);
+    border: 1px solid transparent;
+}
+
+#nav-new-invoice {
+    background: var(--accent-bg);
     border: 1px solid var(--accent-border);
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 8px;
+    border-radius: var(--radius);
+}
+#nav-new-invoice:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
 }
 
 .sidebar-footer {
@@ -230,6 +244,9 @@ body {
 
 .main-content > #wizard-view.active {
     padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 .view { display: none; }
@@ -398,7 +415,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-tertiary);
-    background: var(--bg-tertiary);
+    background: #F2F3F7;
 }
 
 .data-table td {
@@ -604,7 +621,7 @@ body {
 .th-emp-row {
     display: grid;
     grid-template-columns: minmax(180px, 1.2fr) minmax(180px, 1.8fr) 120px 110px 110px 36px;
-    align-items: center;
+    align-items: start;
     gap: 12px;
     padding: 12px 20px;
     border-bottom: 1px solid var(--border-color);
@@ -614,13 +631,14 @@ body {
 /* Display-as column: mode toggle + optional service picker inline */
 .th-display-col {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
     align-items: center;
     min-width: 0;
 }
 .th-display-col .form-select {
     min-width: 0;
-    flex: 1;
+    flex: 1 1 120px;
 }
 
 /* Identity: avatar + name + meta */
@@ -710,22 +728,25 @@ body {
 .th-remove-btn {
     width: 28px;
     height: 28px;
-    border-radius: 50%;
+    border-radius: var(--radius-sm);
     border: none;
-    background: var(--error-bg);
-    color: var(--error);
+    background: none;
+    color: var(--text-muted);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: var(--transition);
+    transition: color 0.15s, background 0.15s;
 }
-.th-remove-btn:hover { background: rgba(239,68,68,0.25); }
+.th-remove-btn:hover {
+    color: var(--danger, #e05252);
+    background: var(--danger-bg, rgba(224, 82, 82, 0.08));
+}
 
 /* Add button row */
 .th-add-row {
-    padding: 10px 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 /* Summary panel */
@@ -850,7 +871,7 @@ body {
    ====================================== */
 #wizard-view {
     margin: -20px -40px 0;
-    padding: 0 40px 32px;
+    padding: 0 40px 0;
 }
 
 .wizard-header-sticky {
@@ -1019,11 +1040,16 @@ body {
    Wizard Content
    ====================================== */
 .wizard-content {
-    min-height: 400px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .wizard-step {
     animation: fadeIn 0.3s ease;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .wizard-step h2 {
@@ -1099,6 +1125,27 @@ body {
     max-width: 200px;
     padding: 8px 10px;
     font-size: 0.85rem;
+}
+
+.btn-remove-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.15s, background 0.15s;
+}
+
+.btn-remove-row:hover {
+    color: var(--danger, #e05252);
+    background: var(--danger-bg, rgba(224, 82, 82, 0.08));
 }
 
 /* Sharing Key Table */
@@ -1537,7 +1584,7 @@ input[type="date"].form-input:hover {
 .form-input--readonly {
     display: flex;
     align-items: center;
-    background: var(--bg-tertiary);
+    background: #F2F3F7;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     padding: 8px 12px;
@@ -1904,7 +1951,7 @@ input[type="date"].form-input:hover {
     background: var(--bg-secondary);
     position: sticky;
     bottom: 0;
-    margin: 32px -40px 0;
+    margin: 0 -40px 0;
     z-index: 50;
 }
 
@@ -1913,6 +1960,14 @@ input[type="date"].form-input:hover {
     color: var(--text-secondary);
     font-weight: 500;
 }
+
+.wizard-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
 
 /* ======================================
    Invoice Detail
@@ -2299,8 +2354,9 @@ input[type="date"].form-input:hover {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: var(--success-bg);
+    border: 1px solid var(--accent-border);
+    border-left: 3px solid var(--accent);
     border-radius: var(--radius);
     padding: 14px 20px;
     margin-bottom: 20px;
@@ -2504,9 +2560,10 @@ input[type="date"].form-input:hover {
     height: 340px;
     border: 2px solid var(--border-color);
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow: visible;
     margin-bottom: 28px;
     background: var(--bg-primary);
+    clip-path: none;
 }
 
 /* Side columns (3rd parties, expenses) */
@@ -2643,10 +2700,10 @@ input[type="date"].form-input:hover {
 }
 
 .rv-fee-band[data-tooltip]::after {
-    top: 100%;
+    bottom: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(-4px);
-    margin-top: 6px;
+    transform: translateX(-50%) translateY(4px);
+    margin-bottom: 6px;
 }
 .rv-fee-band[data-tooltip]:hover::after {
     transform: translateX(-50%) translateY(0);
@@ -2663,9 +2720,56 @@ input[type="date"].form-input:hover {
 }
 
 /* Hover highlight */
-.rv-fee-band:hover { filter: brightness(1.15); }
-.rv-cell-block:hover { background: var(--bg-hover); }
-.rv-block:hover { background: var(--bg-hover); }
+.rv-fee-band:hover { filter: brightness(1.15); cursor: default; }
+.rv-cell-block:hover { background: var(--bg-hover); cursor: default; }
+.rv-block:hover { background: var(--bg-hover); cursor: default; }
+
+/* Rich JS tooltip */
+.rv-rich-tooltip {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 10px 14px;
+    min-width: 180px;
+    pointer-events: none;
+}
+.rv-tip-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+.rv-tip-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+.rv-tip-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+}
+.rv-tip-label { flex: 1; }
+.rv-tip-val { font-weight: 600; white-space: nowrap; }
+.rv-tip-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
 
 /* Legend */
 .rv-legend {
@@ -2863,6 +2967,14 @@ body.dark ::-webkit-scrollbar-thumb:hover {
 
 body.dark input[type="date"].form-input {
     background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' stroke='%235e6380' stroke-width='2'/%3E%3Cpath d='M3 10h18' stroke='%235e6380' stroke-width='2'/%3E%3Cpath d='M8 2v4M16 2v4' stroke='%235e6380' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+body.dark .th-cell-header,
+body.dark .th-summary-header,
+body.dark .cell-section-header,
+body.dark .data-table th,
+body.dark .form-input--readonly {
+    background: var(--bg-tertiary);
 }
 
 body.light .sidebar {

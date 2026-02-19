@@ -370,7 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#btn-prev').addEventListener('click', prevStep);
     $('#btn-next').addEventListener('click', nextStep);
-
     // Mode Switcher
     initModeSwitcher();
 
@@ -821,14 +820,6 @@ function renderStep1(container, data) {
                     <input type="text" class="form-input" id="w-booking-name" placeholder="Enter name" value="${data.bookingName || ''}">
                     <span class="form-error">Booking name is required</span>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Link to Contract</label>
-                    <input type="text" class="form-input" id="w-link-contract" placeholder="https://..." value="${data.linkToContract || ''}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Link to Customer Invoice</label>
-                    <input type="text" class="form-input" id="w-link-invoice" placeholder="https://..." value="${data.linkToCustomerInvoice || ''}">
-                </div>
             </div>
 
             <h2 style="margin-top: 40px;">Total Amount Invoiced to Customer</h2>
@@ -862,6 +853,9 @@ function renderStep1(container, data) {
                                 <select class="form-select third-party-currency" data-idx="${idx}">
                                     ${currencyOptions.map(c => `<option value="${c}" ${svc.currency === c ? 'selected' : ''}>${c}</option>`).join('')}
                                 </select>
+                                <button class="btn-remove-row third-party-delete" data-idx="${idx}" title="Remove">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+                                </button>
                             </div>
                         `).join('')}
                     </div>
@@ -1005,6 +999,15 @@ function renderStep1(container, data) {
             renderStep1(container, data);
         });
     }
+
+    // Delete provider buttons
+    container.querySelectorAll('.third-party-delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const idx = parseInt(e.currentTarget.dataset.idx);
+            data.thirdPartyServices.splice(idx, 1);
+            renderStep1(container, data);
+        });
+    });
 }
 
 function saveStep1() {
@@ -1261,7 +1264,7 @@ function renderStep3(container, data) {
                 </div>
                 <div class="th-display-col">
                     <select class="form-select th-display-select" data-entry-idx="${entryIdx}">
-                        <option value="name" ${!isService ? 'selected' : ''}>Display: Name</option>
+                        <option value="name" ${!isService ? 'selected' : ''}>Display on invoice: Name</option>
                         <option value="service" ${isService ? 'selected' : ''}>Display: Service</option>
                     </select>
                     ${serviceDropdown}
@@ -1276,7 +1279,7 @@ function renderStep3(container, data) {
                 </div>
                 <span class="th-emp-subtotal">${symbol} ${fmt(subtotal)}</span>
                 <button class="th-remove-btn" data-entry-idx="${entryIdx}" title="Remove">
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6h8"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
                 </button>
             </div>`;
     }
@@ -1359,7 +1362,7 @@ function renderStep3(container, data) {
                 if (firstEmp) {
                     const rc = CELL_RATE_CARDS[cellId];
                     const rate = rc ? (rc.rates[firstEmp.seniority] || 0) : 0;
-                    data.teamEntries.push({ cellId, employeeId: firstEmp.id, hours: 0, rate, displayAs: 'name' });
+                    data.teamEntries.push({ cellId, employeeId: firstEmp.id, hours: 1, rate, displayAs: 'name' });
                     render();
                 }
             });
@@ -1374,13 +1377,12 @@ function renderStep3(container, data) {
             });
         });
 
-        // Display-as select change
         // Display mode toggle — re-render to show/hide service dropdown
         container.querySelectorAll('.th-display-select').forEach(sel => {
             sel.addEventListener('change', () => {
                 const entry = data.teamEntries[parseInt(sel.dataset.entryIdx)];
                 if (sel.value === 'service') {
-                    entry.displayAs = DISPLAY_AS_OPTIONS[0]; // default to first service
+                    entry.displayAs = DISPLAY_AS_OPTIONS[0];
                 } else {
                     entry.displayAs = 'name';
                 }
@@ -1394,7 +1396,6 @@ function renderStep3(container, data) {
                 data.teamEntries[parseInt(sel.dataset.entryIdx)].displayAs = sel.value;
             });
         });
-
 
         // Rate input — live update subtotal + cell total + summary
         container.querySelectorAll('.th-rate-input').forEach(inp => {
@@ -1810,7 +1811,14 @@ function renderStep5(container, data) {
                 <!-- Left columns: 3rd parties + expenses -->
                 ${pct3rd > 0 ? `
                 <div class="rv-col rv-col--side" style="flex: ${pct3rd};">
-                    <div class="rv-block rv-block--3rd" data-tooltip="3rd Parties: ${fmt(thirdPartyTotal)}">
+                    <div class="rv-block rv-block--3rd"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "3rd Party Services",
+                            total: thirdPartyTotal,
+                            rows: data.thirdPartyServices.filter(s => s.amount > 0).length > 1
+                                ? data.thirdPartyServices.filter(s => s.amount > 0).map(s => ({ label: s.providerName || "Provider", value: s.amount }))
+                                : []
+                        })}'>
                         <span class="rv-block-label">3rd parties</span>
                     </div>
                 </div>
@@ -1818,7 +1826,15 @@ function renderStep5(container, data) {
 
                 ${pctExp > 0 ? `
                 <div class="rv-col rv-col--side" style="flex: ${pctExp};">
-                    <div class="rv-block rv-block--exp" data-tooltip="Expenses: ${fmt(expensesTravel + reimb)}">
+                    <div class="rv-block rv-block--exp"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Expenses",
+                            total: expensesTravel + reimb,
+                            rows: [
+                                ...(expensesTravel > 0 ? [{ label: "Travel & Material", value: expensesTravel }] : []),
+                                ...(reimb > 0 ? [{ label: "Reimbursements/Skonto", value: reimb }] : [])
+                            ].filter((_, __, arr) => arr.length > 1)
+                        })}'>
                         <span class="rv-block-label">expenses</span>
                     </div>
                 </div>
@@ -1827,13 +1843,28 @@ function renderStep5(container, data) {
                 <!-- Revenue column (main) -->
                 <div class="rv-col rv-col--revenue" style="flex: ${pctRevenue};">
                     <!-- Fee bands at the top -->
-                    <div class="rv-fee-band rv-fee-band--group" style="flex: ${pctGroupFee};" data-tooltip="Group Services Fee ${groupServicesPct}%: ${fmt(groupServicesVal)}">
+                    <div class="rv-fee-band rv-fee-band--group" style="flex: ${pctGroupFee};"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Group Services Fee",
+                            total: groupServicesVal,
+                            rows: sk.groupServicesFee.entries.length > 1 ? sk.groupServicesFee.entries.map(e => ({ label: e.cell + " (" + e.percent + "%)", value: revenue * e.percent / 100 })) : []
+                        })}'>
                         <span class="rv-fee-label">Group Services Fee ${groupServicesPct}%</span>
                     </div>
-                    <div class="rv-fee-band rv-fee-band--account" style="flex: ${pctAcctFee};" data-tooltip="Account Owner Fee ${accountOwnerPct}%: ${fmt(accountOwnerVal)}">
+                    <div class="rv-fee-band rv-fee-band--account" style="flex: ${pctAcctFee};"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Account Owner Fee",
+                            total: accountOwnerVal,
+                            rows: sk.accountOwnerFee.entries.length > 1 ? sk.accountOwnerFee.entries.map(e => ({ label: e.cell + " (" + e.percent + "%)", value: revenue * e.percent / 100 })) : []
+                        })}'>
                         <span class="rv-fee-label">Account Owner Fee ${accountOwnerPct}%</span>
                     </div>
-                    <div class="rv-fee-band rv-fee-band--sales" style="flex: ${pctSalesFee};" data-tooltip="Sales Fee ${salesFeePct}%: ${fmt(salesFeeVal)}">
+                    <div class="rv-fee-band rv-fee-band--sales" style="flex: ${pctSalesFee};"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Sales Fee",
+                            total: salesFeeVal,
+                            rows: sk.salesFee.entries.length > 1 ? sk.salesFee.entries.map(e => ({ label: e.cell + " (" + e.percent + "%)", value: revenue * e.percent / 100 })) : []
+                        })}'>
                         <span class="rv-fee-label">Sales Fee ${salesFeePct}%</span>
                     </div>
 
@@ -1844,7 +1875,8 @@ function renderStep5(container, data) {
                             const entryPct = (e.percent || 0);
                             const entryVal = cellServicesTotal * entryPct / 100;
                             return `
-                                <div class="rv-cell-block" style="flex: ${entryPct || 1};" data-tooltip="${cellObj?.fullName || e.cell}: ${fmt(entryVal)}">
+                                <div class="rv-cell-block" style="flex: ${entryPct || 1};"
+                                    data-rv-tooltip='${JSON.stringify({ title: (cellObj?.fullName || e.cell), total: entryVal, rows: [] })}'>
                                     <span class="rv-cell-label">${e.cell}</span>
                                 </div>
                             `;
@@ -1908,6 +1940,51 @@ function renderStep5(container, data) {
             </div>
         </div>
     `;
+
+    // Rich JS tooltip for diagram blocks
+    let rvTip = document.getElementById('rv-rich-tooltip');
+    if (!rvTip) {
+        rvTip = document.createElement('div');
+        rvTip.id = 'rv-rich-tooltip';
+        rvTip.className = 'rv-rich-tooltip';
+        document.body.appendChild(rvTip);
+    }
+
+    const fmtVal = (v) => formatCurrency(v, cur);
+
+    container.querySelectorAll('[data-rv-tooltip]').forEach(el => {
+        el.addEventListener('mouseenter', (e) => {
+            try {
+                const d = JSON.parse(el.dataset.rvTooltip);
+                let html = `<div class="rv-tip-title">${d.title}</div>`;
+                if (d.rows && d.rows.length > 0) {
+                    html += `<div class="rv-tip-rows">`;
+                    d.rows.forEach(r => {
+                        html += `<div class="rv-tip-row"><span class="rv-tip-label">${r.label}</span><span class="rv-tip-val">${fmtVal(r.value)}</span></div>`;
+                    });
+                    html += `</div><div class="rv-tip-total"><span>Total</span><span>${fmtVal(d.total)}</span></div>`;
+                } else {
+                    html += `<div class="rv-tip-total"><span>${fmtVal(d.total)}</span></div>`;
+                }
+                rvTip.innerHTML = html;
+                rvTip.style.display = 'block';
+            } catch(err) {}
+        });
+        el.addEventListener('mousemove', (e) => {
+            const pad = 14;
+            const tw = rvTip.offsetWidth;
+            const th = rvTip.offsetHeight;
+            let x = e.clientX + pad;
+            let y = e.clientY - th - pad;
+            if (x + tw > window.innerWidth - 8) x = e.clientX - tw - pad;
+            if (y < 8) y = e.clientY + pad;
+            rvTip.style.left = x + 'px';
+            rvTip.style.top  = y + 'px';
+        });
+        el.addEventListener('mouseleave', () => {
+            rvTip.style.display = 'none';
+        });
+    });
 }
 
 // ──────────────────────────────────────────
