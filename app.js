@@ -1,5 +1,5 @@
 /* ======================================================================
-   InvoiceHub — Multi-Cell Invoice Wizard Application
+   RDS — Multi-Cell Invoice Wizard Application
    ====================================================================== */
 
 // ──────────────────────────────────────────
@@ -7,15 +7,15 @@
 // ──────────────────────────────────────────
 const CELLS = [
     { id: 'AM', name: 'AM', fullName: 'Amsterdam',        employees: 18, color: '#3b82f6' },
-    { id: 'AT', name: 'AT', fullName: 'Athens',           employees: 14, color: '#a855f7' },
+    { id: 'AT', name: 'AT', fullName: 'Athens',           employees: 14, color: '#8E7CC3' },
     { id: 'BA', name: 'BA', fullName: 'Baar',             employees: 22, color: '#22c55e' },
     { id: 'DO', name: 'DO', fullName: 'Dornbirn',         employees: 12, color: '#ec4899' },
     { id: 'DU', name: 'DU', fullName: 'Dusseldorf',       employees: 20, color: '#f97316' },
     { id: 'FE', name: 'FE', fullName: 'Feldkirch',        employees: 10, color: '#14b8a6' },
-    { id: 'FF', name: 'FF', fullName: 'Frankfurt',        employees: 28, color: '#6366f1' },
+    { id: 'FF', name: 'FF', fullName: 'Frankfurt',        employees: 28, color: '#2AA294' },
     { id: 'HD', name: 'HD', fullName: 'Heidelberg',       employees: 16, color: '#f59e0b' },
     { id: 'MU', name: 'MU', fullName: 'Munich',           employees: 32, color: '#ef4444' },
-    { id: 'RB', name: 'RB', fullName: 'Regensburg',       employees: 12, color: '#8b5cf6' },
+    { id: 'RB', name: 'RB', fullName: 'Regensburg',       employees: 12, color: '#4DB6AC' },
     { id: 'SO', name: 'SO', fullName: 'Sofia',            employees: 24, color: '#10b981' },
     { id: 'ST', name: 'ST', fullName: 'Stuttgart',        employees: 26, color: '#0ea5e9' },
     { id: 'US', name: 'US', fullName: 'Uster',            employees: 30, color: '#d946ef' },
@@ -33,9 +33,9 @@ const SENIORITY_LEVELS = [
 const EMPLOYEES_DB = [
     // AM — Amsterdam
     { id: 'e1',  name: 'Alice Martin',       cell: 'AM', seniority: 'senior',    avatar: '#3b82f6' },
-    { id: 'e2',  name: 'Bob Thompson',       cell: 'AM', seniority: 'mid',       avatar: '#6366f1' },
+    { id: 'e2',  name: 'Bob Thompson',       cell: 'AM', seniority: 'mid',       avatar: '#2AA294' },
     // AT — Athens
-    { id: 'e3',  name: 'Nikos Papadopoulos', cell: 'AT', seniority: 'senior',    avatar: '#a855f7' },
+    { id: 'e3',  name: 'Nikos Papadopoulos', cell: 'AT', seniority: 'senior',    avatar: '#8E7CC3' },
     { id: 'e4',  name: 'Elena Kosta',        cell: 'AT', seniority: 'mid',       avatar: '#ec4899' },
     // BA — Baar
     { id: 'e5',  name: 'Marco Bianchi',      cell: 'BA', seniority: 'senior',    avatar: '#22c55e' },
@@ -47,18 +47,18 @@ const EMPLOYEES_DB = [
     { id: 'e9',  name: 'Michael Richter',    cell: 'DU', seniority: 'principal', avatar: '#f97316' },
     { id: 'e10', name: 'Christina Becker',   cell: 'DU', seniority: 'senior',    avatar: '#3b82f6' },
     // FE — Feldkirch
-    { id: 'e11', name: 'Andreas Moser',      cell: 'FE', seniority: 'senior',    avatar: '#6366f1' },
+    { id: 'e11', name: 'Andreas Moser',      cell: 'FE', seniority: 'senior',    avatar: '#1F7A6E' },
     { id: 'e12', name: 'Maria Gruber',       cell: 'FE', seniority: 'mid',       avatar: '#14b8a6' },
     // FF — Frankfurt
-    { id: 'e13', name: 'Hans Schmidt',       cell: 'FF', seniority: 'principal', avatar: '#6366f1' },
+    { id: 'e13', name: 'Hans Schmidt',       cell: 'FF', seniority: 'principal', avatar: '#2AA294' },
     { id: 'e14', name: 'Ines Braun',         cell: 'FF', seniority: 'senior',    avatar: '#f59e0b' },
     { id: 'e15', name: 'Jan Fischer',        cell: 'FF', seniority: 'mid',       avatar: '#22c55e' },
     // HD — Heidelberg
-    { id: 'e16', name: 'Klaus Wagner',       cell: 'HD', seniority: 'senior',    avatar: '#a855f7' },
+    { id: 'e16', name: 'Klaus Wagner',       cell: 'HD', seniority: 'senior',    avatar: '#8E7CC3' },
     { id: 'e17', name: 'Laura Beck',         cell: 'HD', seniority: 'junior',    avatar: '#ec4899' },
     // MU — Munich
     { id: 'e18', name: 'Maximilian Huber',   cell: 'MU', seniority: 'principal', avatar: '#ef4444' },
-    { id: 'e19', name: 'Franziska Weber',    cell: 'MU', seniority: 'senior',    avatar: '#8b5cf6' },
+    { id: 'e19', name: 'Franziska Weber',    cell: 'MU', seniority: 'senior',    avatar: '#4DB6AC' },
     { id: 'e20', name: 'Georg Stadler',      cell: 'MU', seniority: 'mid',       avatar: '#10b981' },
     // RB — Regensburg
     { id: 'e21', name: 'Stefan Maier',       cell: 'RB', seniority: 'senior',    avatar: '#0ea5e9' },
@@ -70,7 +70,7 @@ const EMPLOYEES_DB = [
     // ST — Stuttgart
     { id: 'e26', name: 'Helmut Gruber',      cell: 'ST', seniority: 'principal', avatar: '#0ea5e9' },
     { id: 'e27', name: 'Sabine Kraft',       cell: 'ST', seniority: 'senior',    avatar: '#14b8a6' },
-    { id: 'e28', name: 'Tobias Roth',        cell: 'ST', seniority: 'mid',       avatar: '#a855f7' },
+    { id: 'e28', name: 'Tobias Roth',        cell: 'ST', seniority: 'mid',       avatar: '#8E7CC3' },
     // US — Uster
     { id: 'e29', name: 'Daniel Stadelmann',  cell: 'US', seniority: 'principal', avatar: '#d946ef' },
     { id: 'e30', name: 'Noah Keller',        cell: 'US', seniority: 'senior',    avatar: '#f43f5e' },
@@ -187,29 +187,52 @@ let state = {
 
 function resetWizardData() {
     return {
-        projectId: '',
-        projectName: '',
-        clientId: '',
-        invoiceNumber: '',
-        invoicingCell: '',
-        projectManagerId: '',
-        bookingDate: '',
-        bookingNameId: '',
-        projectType: 'time-material',
-        billingPeriodStart: '',
-        billingPeriodEnd: '',
-        description: '',
+        // Step 1: Account and Invoice Information
+        projectCode: 'PRJ-2024-0847',
+        invoiceToCustomer: 'INV-2024-1203',
+        timeSpanStart: '2024-01-01',
+        timeSpanEnd: '2024-01-31',
+        invoicingCell: 'ZU',
+        projectManager: 'Daniel Stadelmann',
+        bookingDate: '2024-02-05',
+        bookingName: 'Daniel Stadelmann',
+        linkToContract: 'https://docs.company.com/contracts/acme-2024',
+        linkToCustomerInvoice: 'https://docs.company.com/invoices/inv-2024-1203',
+        // Financial fields
         currency: 'CHF',
-        selectedCells: [],
-        teamEntries: [], // { employeeId, hours }
+        monthlyExchangeRate: 0.95,
+        totalAmountInvoiced: 125000,        // (A)
+        expensesOutsideVAT: 2500,
+        invoiceToCustomerInklVAT: 135125,
+        vatPercent: 8.1,
+        vatAmount: 10125,                   // (I)
+        invoiceToCustomerNET: 125000,
+        expensesTravelMaterial: 3500,      // (H)
+        // 3rd Party Services (G)
+        thirdPartyServices: [
+            { currency: 'CHF', amount: 8500, providerName: 'CloudHost AG' },
+        ],
+        reimbursementsSkonto: 1250,        // (F)
+        invoiceRevenueForFee: 107550,        // Calculated
+        // Step 4: Sharing Key - Fee Distribution
+        sharingKey: {
+            salesFee:        { entries: [{ cell: 'ZU', percent: 10 }] },
+            accountOwnerFee: { entries: [{ cell: 'ZU', percent: 4  }] },
+            groupServicesFee:{ entries: [{ cell: 'ZU', percent: 3  }] },
+            cellServices:    { entries: [{ cell: 'ZU', percent: 100}] },
+        },
+        // Legacy
+        selectedCells: ['ZU', 'BA', 'MU', 'VI'],
+        teamEntries: [
+            { employeeId: 'e35', hours: 45 },  // Marc Dupont (ZU)
+            { employeeId: 'e36', hours: 32 },  // Leonie Fischer (ZU)
+            { employeeId: 'e5', hours: 28 },   // Lukas Wagner (BA)
+            { employeeId: 'e6', hours: 20 },   // Emilia Graf (BA)
+            { employeeId: 'e18', hours: 35 },  // Maximilian Huber (MU)
+            { employeeId: 'e32', hours: 25 },  // Erik Müller (VI)
+        ],
         applyTax: true,
-        taxCell: '', // which cell's tax rate to use
-        discountType: 'none', // none, percentage, fixed
-        discountValue: 0,
-        rushSurcharge: false,
-        crossCellFee: false,
-        notes: '',
-        paymentTerms: 'net30',
+        taxCell: 'ZU',
     };
 }
 
@@ -347,7 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#btn-prev').addEventListener('click', prevStep);
     $('#btn-next').addEventListener('click', nextStep);
-
     // Mode Switcher
     initModeSwitcher();
 
@@ -380,8 +402,13 @@ function initWizardHeaderScroll() {
 // ──────────────────────────────────────────
 function initModeSwitcher() {
     const saved = localStorage.getItem('invoicehub-theme');
-    if (saved === 'light') {
-        document.body.classList.add('light');
+    if (saved === 'dark') {
+        document.body.classList.add('dark');
+        $('#mode-dark').classList.add('active');
+        $('#mode-light').classList.remove('active');
+    } else {
+        // Light is the default
+        document.body.classList.remove('dark');
         $('#mode-light').classList.add('active');
         $('#mode-dark').classList.remove('active');
     }
@@ -392,10 +419,10 @@ function initModeSwitcher() {
             $$('.mode-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            if (mode === 'light') {
-                document.body.classList.add('light');
+            if (mode === 'dark') {
+                document.body.classList.add('dark');
             } else {
-                document.body.classList.remove('light');
+                document.body.classList.remove('dark');
             }
             localStorage.setItem('invoicehub-theme', mode);
         });
@@ -589,7 +616,7 @@ function renderWizardStep() {
     const step = state.wizard.currentStep;
     const data = state.wizard.data;
 
-    // Update progress bar
+    // Update progress bar (now 5 steps)
     $('#progress-fill').style.width = `${(step / 5) * 100}%`;
     $('#current-step-num').textContent = step;
 
@@ -606,14 +633,15 @@ function renderWizardStep() {
     if (step === 5) {
         $('#btn-next').innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Create Invoice`;
         $('#btn-next').classList.remove('btn-primary');
-        $('#btn-next').classList.add('btn-success');
+        $('#btn-next').classList.add('btn-accent');
     } else {
         $('#btn-next').innerHTML = `Next <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-        $('#btn-next').classList.remove('btn-success');
+        $('#btn-next').classList.remove('btn-accent');
         $('#btn-next').classList.add('btn-primary');
     }
 
     const container = $('#wizard-content');
+    // Step 1: Account & Invoice, Step 2: Cell Selection, Step 3: Team & Hours, Step 4: Sharing Key, Step 5: Summary
     const renderers = [null, renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
     renderers[step](container, data);
 }
@@ -721,70 +749,67 @@ function ssHTML(id, placeholder, selectedLabel, disabled) {
     </div>`;
 }
 
-// ─── STEP 1: Customer & Project ───
+// ─── STEP 1: Account and Invoice Information ───
 function renderStep1(container, data) {
     const today = new Date().toISOString().split('T')[0];
-
-    // Filter projects based on selected customer
-    const customerProjects = data.clientId
-        ? PROJECTS_DB.filter(p => p.clientId === data.clientId)
-        : [];
-    const activeProjects = customerProjects.filter(p => p.status === 'active');
-    const archivedProjects = customerProjects.filter(p => p.status === 'archived');
-
-    // If customer changed and current project doesn't belong to new customer, reset it
-    if (data.projectId && data.clientId) {
-        const proj = PROJECTS_DB.find(p => p.id === data.projectId);
-        if (proj && proj.clientId !== data.clientId) {
-            data.projectId = '';
-            data.projectName = '';
-        }
-    }
-
-    // Auto-generate invoice number if empty
-    if (!data.invoiceNumber) {
-        data.invoiceNumber = generateInvoiceNumber();
-    }
-
-    const selectedClient = CLIENTS_DB.find(c => c.id === data.clientId);
-    const selectedProject = PROJECTS_DB.find(p => p.id === data.projectId);
-    const selectedPM = EMPLOYEES_DB.find(e => e.id === data.projectManagerId);
-    const selectedBooking = EMPLOYEES_DB.find(e => e.id === data.bookingNameId);
     const selectedInvCell = CELLS.find(c => c.id === data.invoicingCell);
 
-    const projectTypeLabels = { 'time-material': 'Time & Material', 'fixed-price': 'Fixed Price', 'retainer': 'Retainer', 'milestone': 'Milestone-Based' };
-    const currencyLabels = { 'EUR': 'EUR (€)', 'USD': 'USD ($)', 'GBP': 'GBP (£)', 'CHF': 'CHF' };
+    // Currency & VAT options
+    const currencyOptions = ['CHF', 'EUR', 'USD', 'GBP'];
+    const vatOptions = [
+        { value: 8.1, label: '8.1%' },
+        { value: 7.7, label: '7.7%' },
+        { value: 19, label: '19%' },
+        { value: 20, label: '20%' },
+        { value: 21, label: '21%' },
+        { value: 0, label: '0%' },
+    ];
+
+    // Compute derived financial values
+    const inklVAT = (data.totalAmountInvoiced || 0) - (data.expensesOutsideVAT || 0);
+    const vatPct = data.vatPercent || 0;
+    const vatAmount = inklVAT * vatPct / (100 + vatPct);
+    const net = inklVAT - vatAmount;
+    const invoiceRevenue = net - (data.expensesTravelMaterial || 0) - (data.reimbursementsSkonto || 0);
+
+    // Sync back to data
+    data.invoiceToCustomerInklVAT = inklVAT;
+    data.vatAmount = vatAmount;
+    data.invoiceToCustomerNET = net;
+    data.invoiceRevenueForFee = invoiceRevenue;
 
     container.innerHTML = `
         <div class="wizard-step">
-            <h2>Customer & Project</h2>
-            <p class="step-desc">Select the customer, project, and configure invoice details.</p>
+            <h2>Account and Invoice Information</h2>
+            <p class="step-desc">Enter the project and invoice details.</p>
             <div class="form-grid">
                 <div class="form-group">
-                    <label class="form-label">Customer <span class="required">*</span></label>
-                    ${ssHTML('ss-client', 'Select a customer...', selectedClient ? selectedClient.name : '')}
-                    <span class="form-error">Please select a customer</span>
+                    <label class="form-label">Project Code <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="w-project-code" placeholder="e.g. ABCDXYZ" value="${data.projectCode || ''}">
+                    <span class="form-error">Project code is required</span>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Project <span class="required">*</span></label>
-                    ${ssHTML('ss-project', data.clientId ? 'Select a project...' : 'Select a customer first...', selectedProject ? selectedProject.code + ': ' + selectedProject.name : '', !data.clientId)}
-                    <span class="form-error">Please select a project</span>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Invoice Number <span class="required">*</span></label>
-                    <input type="text" class="form-input" id="w-invoice-number" placeholder="e.g. INV-202602-0001" value="${data.invoiceNumber}">
+                    <label class="form-label">Invoice # to Customer <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="w-invoice-to-customer" placeholder="e.g. R002005" value="${data.invoiceToCustomer || ''}">
                     <span class="form-error">Invoice number is required</span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Time Span Start <span class="required">*</span></label>
+                    <input type="date" class="form-input" id="w-time-span-start" value="${data.timeSpanStart || today}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Time Span End <span class="required">*</span></label>
+                    <input type="date" class="form-input" id="w-time-span-end" value="${data.timeSpanEnd || ''}">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Invoicing Cell <span class="required">*</span></label>
                     ${ssHTML('ss-invoicing-cell', 'Select a cell...', selectedInvCell ? selectedInvCell.name + ' — ' + selectedInvCell.fullName : '')}
-                    <span class="form-hint">The subsidiary that issues this invoice</span>
                     <span class="form-error">Please select an invoicing cell</span>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Project Manager <span class="required">*</span></label>
-                    ${ssHTML('ss-pm', 'Select project manager...', selectedPM ? selectedPM.name : '')}
-                    <span class="form-error">Please select a project manager</span>
+                    <input type="text" class="form-input" id="w-project-manager" placeholder="Enter name" value="${data.projectManager || ''}">
+                    <span class="form-error">Project manager is required</span>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Booking Date <span class="required">*</span></label>
@@ -792,88 +817,110 @@ function renderStep1(container, data) {
                 </div>
                 <div class="form-group">
                     <label class="form-label">Booking Name <span class="required">*</span></label>
-                    ${ssHTML('ss-booking', 'Select booking name...', selectedBooking ? selectedBooking.name : '')}
-                    <span class="form-error">Please select a booking name</span>
+                    <input type="text" class="form-input" id="w-booking-name" placeholder="Enter name" value="${data.bookingName || ''}">
+                    <span class="form-error">Booking name is required</span>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Project Type</label>
-                    ${ssHTML('ss-project-type', 'Select project type...', projectTypeLabels[data.projectType] || '')}
+            </div>
+
+            <h2 style="margin-top: 40px;">Total Amount Invoiced to Customer</h2>
+            <p class="step-desc">Enter the total amount billed to the customer for this invoice.</p>
+
+            <div class="cell-section">
+                <div class="cell-section-header">
+                    <h3>Invoice Total <span class="rate-display" style="margin-left: 8px;">${formatCurrency(data.totalAmountInvoiced || 0, data.currency || 'CHF')}</span></h3>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Billing Period Start</label>
-                    <input type="date" class="form-input" id="w-period-start" value="${data.billingPeriodStart || today}">
+                <div class="cell-section-body">
+                    <div class="total-invoice-row">
+                        <div class="form-group" style="margin:0; max-width: 220px;">
+                            <label class="form-label">Amount (${data.currency || 'CHF'})</label>
+                            <input type="number" class="form-input" id="w-total-amount" step="0.01" min="0" value="${data.totalAmountInvoiced || 0}" placeholder="0.00">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Billing Period End</label>
-                    <input type="date" class="form-input" id="w-period-end" value="${data.billingPeriodEnd}">
+            </div>
+
+            <div class="cell-section">
+                <div class="cell-section-header">
+                    <h3>3rd Party Services</h3>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Currency</label>
-                    ${ssHTML('ss-currency', 'Select currency...', currencyLabels[data.currency] || '')}
+                <div class="cell-section-body">
+                    <div class="third-party-services">
+                        ${data.thirdPartyServices.map((svc, idx) => `
+                            <div class="third-party-row">
+                                <span class="third-party-label">Provider ${idx + 1}</span>
+                                <input type="text" class="form-input third-party-name" data-idx="${idx}" value="${svc.providerName || ''}" placeholder="Provider Name">
+                                <input type="number" class="form-input third-party-amount" data-idx="${idx}" step="0.01" min="0" value="${svc.amount || 0}" placeholder="0.00">
+                                <select class="form-select third-party-currency" data-idx="${idx}">
+                                    ${currencyOptions.map(c => `<option value="${c}" ${svc.currency === c ? 'selected' : ''}>${c}</option>`).join('')}
+                                </select>
+                                <button class="btn-remove-row third-party-delete" data-idx="${idx}" title="Remove">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="add-employee-row">
+                        <button class="btn-add-employee" id="add-third-party">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg>
+                            Add provider
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group full">
-                    <label class="form-label">Description</label>
-                    <textarea class="form-textarea" id="w-description" placeholder="Brief description of the work performed...">${data.description}</textarea>
+            </div>
+
+            <div class="cell-section">
+                <div class="cell-section-header">
+                    <h3>Financial Details</h3>
+                </div>
+                <div class="cell-section-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Currency / Monthly Exchange Rate</label>
+                            <select class="form-select" id="w-currency">
+                                ${currencyOptions.map(c => `<option value="${c}" ${data.currency === c ? 'selected' : ''}>${c}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Expenses outside VAT</label>
+                            <input type="number" class="form-input" id="w-expenses-outside-vat" step="0.01" min="0" value="${data.expensesOutsideVAT || 0}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Value Added Tax, VAT, in %</label>
+                            <select class="form-select" id="w-vat-percent">
+                                ${vatOptions.map(v => `<option value="${v.value}" ${data.vatPercent === v.value ? 'selected' : ''}>${v.label}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Invoice to Customer inkl. VAT</label>
+                            <span class="form-input form-input--readonly" id="w-invoice-inkl-vat">${formatCurrency(data.invoiceToCustomerInklVAT || 0, '')}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Value Added Tax, VAT, Amount (I)</label>
+                            <span class="form-input form-input--readonly" id="w-vat-amount">${formatCurrency(data.vatAmount || 0, '')}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Invoice to Customer NET</label>
+                            <span class="form-input form-input--readonly" id="w-invoice-net">${formatCurrency(data.invoiceToCustomerNET || 0, '')}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Expenses, Travel + Material, excl. Time (H)</label>
+                            <input type="number" class="form-input" id="w-expenses-travel" step="0.01" min="0" value="${data.expensesTravelMaterial || 0}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Reimbursements, Skonto (F)</label>
+                            <input type="number" class="form-input" id="w-reimbursements" step="0.01" value="${data.reimbursementsSkonto || 0}">
+                        </div>
+                    </div>
+                    <div class="financial-revenue-row">
+                        <span class="financial-revenue-label">Invoice Revenue for Fee Calculation</span>
+                        <span class="financial-revenue-value" id="w-invoice-revenue">${formatCurrency(invoiceRevenue, data.currency || 'CHF')}</span>
+                    </div>
                 </div>
             </div>
         </div>
     `;
 
-    // ── Initialize searchable selects ──
-
-    // Customer
-    initSearchableSelect('ss-client', CLIENTS_DB.map(c => ({
-        id: c.id,
-        label: c.name,
-        sublabel: (c.status || 'active').charAt(0).toUpperCase() + (c.status || 'active').slice(1),
-        group: 'Active',
-    })), data.clientId, (val) => {
-        data.clientId = val;
-        data.projectId = '';
-        data.projectName = '';
-        renderStep1(container, data);
-    });
-
-    // Project (depends on customer)
-    if (data.clientId) {
-        const projItems = [];
-        if (activeProjects.length > 0) {
-            activeProjects.forEach(p => projItems.push({ id: p.id, label: p.code + ': ' + p.name, group: 'Active' }));
-        }
-        if (archivedProjects.length > 0) {
-            archivedProjects.forEach(p => projItems.push({ id: p.id, label: p.code + ': ' + p.name, group: 'Archived' }));
-        }
-        initSearchableSelect('ss-project', projItems, data.projectId, (val) => {
-            data.projectId = val;
-            const proj = PROJECTS_DB.find(p => p.id === val);
-            data.projectName = proj ? `${proj.code}: ${proj.name}` : '';
-            renderStep1(container, data);
-        });
-    }
-
-    // Project Manager (all employees, grouped by cell)
-    const pmItems = EMPLOYEES_DB.map(e => {
-        const cell = getCellById(e.cell);
-        const sen = getSeniorityById(e.seniority);
-        return { id: e.id, label: e.name, sublabel: sen ? sen.label : '', group: cell ? cell.name + ' — ' + cell.fullName : 'Other' };
-    });
-    initSearchableSelect('ss-pm', pmItems, data.projectManagerId, (val) => {
-        data.projectManagerId = val;
-        renderStep1(container, data);
-    });
-
-    // Booking Name (all employees, grouped by cell)
-    const bookingItems = EMPLOYEES_DB.map(e => {
-        const cell = getCellById(e.cell);
-        const sen = getSeniorityById(e.seniority);
-        return { id: e.id, label: e.name, sublabel: sen ? sen.label : '', group: cell ? cell.name + ' — ' + cell.fullName : 'Other' };
-    });
-    initSearchableSelect('ss-booking', bookingItems, data.bookingNameId, (val) => {
-        data.bookingNameId = val;
-        renderStep1(container, data);
-    });
-
-    // Invoicing Cell
+    // Initialize Invoicing Cell searchable select
     initSearchableSelect('ss-invoicing-cell', CELLS.map(c => ({
         id: c.id, label: c.name + ' — ' + c.fullName, group: 'Cells',
     })), data.invoicingCell, (val) => {
@@ -881,239 +928,692 @@ function renderStep1(container, data) {
         renderStep1(container, data);
     });
 
-    // Project Type
-    const projectTypeItems = [
-        { id: 'time-material', label: 'Time & Material', group: 'Types' },
-        { id: 'fixed-price',   label: 'Fixed Price',     group: 'Types' },
-        { id: 'retainer',      label: 'Retainer',        group: 'Types' },
-        { id: 'milestone',     label: 'Milestone-Based', group: 'Types' },
-    ];
-    initSearchableSelect('ss-project-type', projectTypeItems, data.projectType, (val) => {
-        data.projectType = val;
-        renderStep1(container, data);
+    // Recalculate all derived financial fields in real time
+    function recalcAll() {
+        const total = parseFloat($('#w-total-amount')?.value) || 0;
+        const expOutVAT = parseFloat($('#w-expenses-outside-vat')?.value) || 0;
+        const vatPct = parseFloat($('#w-vat-percent')?.value) || 0;
+        const travel = parseFloat($('#w-expenses-travel')?.value) || 0;
+        const reimb = parseFloat($('#w-reimbursements')?.value) || 0;
+        const cur = data.currency || 'CHF';
+
+        const inklVAT = total - expOutVAT;
+        const vatAmount = inklVAT * vatPct / (100 + vatPct);
+        const net = inklVAT - vatAmount;
+        const revenue = net - travel - reimb;
+
+        // Update data model
+        data.totalAmountInvoiced = total;
+        data.invoiceToCustomerInklVAT = inklVAT;
+        data.vatAmount = vatAmount;
+        data.invoiceToCustomerNET = net;
+        data.invoiceRevenueForFee = revenue;
+
+        // Update readonly displays
+        const fmt = (v) => formatCurrency(v, '');
+        const elInkl = container.querySelector('#w-invoice-inkl-vat');
+        const elVat = container.querySelector('#w-vat-amount');
+        const elNet = container.querySelector('#w-invoice-net');
+        const elRev = container.querySelector('#w-invoice-revenue');
+        const elHeader = container.querySelector('.cell-section-header .rate-display');
+        if (elInkl) elInkl.textContent = fmt(inklVAT);
+        if (elVat) elVat.textContent = fmt(vatAmount);
+        if (elNet) elNet.textContent = fmt(net);
+        if (elRev) elRev.textContent = formatCurrency(revenue, cur);
+        if (elHeader) elHeader.textContent = formatCurrency(total, cur);
+    }
+
+    // Bind all editable financial inputs
+    ['w-total-amount', 'w-expenses-outside-vat', 'w-expenses-travel', 'w-reimbursements'].forEach(id => {
+        const el = container.querySelector(`#${id}`);
+        if (el) el.addEventListener('input', recalcAll);
+    });
+    const vatSel = container.querySelector('#w-vat-percent');
+    if (vatSel) vatSel.addEventListener('change', recalcAll);
+
+    // Bind 3rd party service inputs
+    container.querySelectorAll('.third-party-currency').forEach(sel => {
+        sel.addEventListener('change', (e) => {
+            const idx = parseInt(e.target.dataset.idx);
+            data.thirdPartyServices[idx].currency = e.target.value;
+        });
+    });
+    container.querySelectorAll('.third-party-amount').forEach(inp => {
+        inp.addEventListener('input', (e) => {
+            const idx = parseInt(e.target.dataset.idx);
+            data.thirdPartyServices[idx].amount = parseFloat(e.target.value) || 0;
+        });
+    });
+    container.querySelectorAll('.third-party-name').forEach(inp => {
+        inp.addEventListener('input', (e) => {
+            const idx = parseInt(e.target.dataset.idx);
+            data.thirdPartyServices[idx].providerName = e.target.value;
+        });
     });
 
-    // Currency
-    const currencyItems = [
-        { id: 'EUR', label: 'EUR (€)',  group: 'Currencies' },
-        { id: 'USD', label: 'USD ($)',  group: 'Currencies' },
-        { id: 'GBP', label: 'GBP (£)', group: 'Currencies' },
-        { id: 'CHF', label: 'CHF',     group: 'Currencies' },
-    ];
-    initSearchableSelect('ss-currency', currencyItems, data.currency, (val) => {
-        data.currency = val;
-        renderStep1(container, data);
+    // Add provider button
+    const addBtn = container.querySelector('#add-third-party');
+    if (addBtn) {
+        addBtn.addEventListener('click', () => {
+            data.thirdPartyServices.push({ currency: 'CHF', amount: 0, providerName: '' });
+            renderStep1(container, data);
+        });
+    }
+
+    // Delete provider buttons
+    container.querySelectorAll('.third-party-delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const idx = parseInt(e.currentTarget.dataset.idx);
+            data.thirdPartyServices.splice(idx, 1);
+            renderStep1(container, data);
+        });
     });
 }
 
 function saveStep1() {
     const d = state.wizard.data;
-    // clientId, projectId, projectManagerId, bookingNameId are set via searchable select callbacks
-    const proj = PROJECTS_DB.find(p => p.id === d.projectId);
-    d.projectName = proj ? `${proj.code}: ${proj.name}` : '';
-    d.invoiceNumber = $('#w-invoice-number').value.trim();
-    // invoicingCell, projectType, currency are set via searchable select callbacks
-    d.bookingDate = $('#w-booking-date').value;
-    d.billingPeriodStart = $('#w-period-start').value;
-    d.billingPeriodEnd = $('#w-period-end').value;
-    d.description = $('#w-description').value;
+
+    // Save all form fields
+    d.projectCode = $('#w-project-code')?.value.trim() || '';
+    d.invoiceToCustomer = $('#w-invoice-to-customer')?.value.trim() || '';
+    d.timeSpanStart = $('#w-time-span-start')?.value || '';
+    d.timeSpanEnd = $('#w-time-span-end')?.value || '';
+    // invoicingCell is set via searchable select callback
+    d.projectManager = $('#w-project-manager')?.value.trim() || '';
+    d.bookingDate = $('#w-booking-date')?.value || '';
+    d.bookingName = $('#w-booking-name')?.value.trim() || '';
+    d.linkToContract = $('#w-link-contract')?.value.trim() || '';
+    d.linkToCustomerInvoice = $('#w-link-invoice')?.value.trim() || '';
+
+    // Financial fields (editable inputs)
+    d.currency = $('#w-currency')?.value || 'CHF';
+    d.totalAmountInvoiced = parseFloat($('#w-total-amount')?.value) || 0;
+    d.expensesOutsideVAT = parseFloat($('#w-expenses-outside-vat')?.value) || 0;
+    d.vatPercent = parseFloat($('#w-vat-percent')?.value) || 8.1;
+    d.expensesTravelMaterial = parseFloat($('#w-expenses-travel')?.value) || 0;
+    d.reimbursementsSkonto = parseFloat($('#w-reimbursements')?.value) || 0;
+
+    // Computed readonly fields — recalculate from editable inputs (these are <span> elements, not inputs)
+    const inklVAT = d.totalAmountInvoiced - d.expensesOutsideVAT;
+    const vatAmt = inklVAT * d.vatPercent / (100 + d.vatPercent);
+    const netVal = inklVAT - vatAmt;
+    d.invoiceToCustomerInklVAT = inklVAT;
+    d.vatAmount = vatAmt;
+    d.invoiceToCustomerNET = netVal;
+    d.invoiceRevenueForFee = netVal - d.expensesTravelMaterial - d.reimbursementsSkonto;
+
+    // Set selectedCells from invoicingCell for Sharing Key step
+    if (d.invoicingCell && !d.selectedCells.includes(d.invoicingCell)) {
+        d.selectedCells = [d.invoicingCell];
+    }
+    // Set tax cell for calculation
+    d.taxCell = d.invoicingCell;
+    d.applyTax = true;
 
     let valid = true;
-    const requireField = (sel, isSearchable) => {
+    const requireField = (sel) => {
         const el = $(sel);
-        if (el) el.closest('.form-group').classList.add('error');
+        if (el) {
+            const group = el.closest('.form-group');
+            if (group) group.classList.add('error');
+        }
         valid = false;
     };
 
-    if (!d.clientId) requireField('#ss-client');
-    if (!d.projectId) requireField('#ss-project');
-    if (!d.invoiceNumber) requireField('#w-invoice-number');
+    if (!d.projectCode) requireField('#w-project-code');
+    if (!d.invoiceToCustomer) requireField('#w-invoice-to-customer');
+    if (!d.timeSpanStart) requireField('#w-time-span-start');
     if (!d.invoicingCell) requireField('#ss-invoicing-cell');
-    if (!d.projectManagerId) requireField('#ss-pm');
+    if (!d.projectManager) requireField('#w-project-manager');
     if (!d.bookingDate) requireField('#w-booking-date');
-    if (!d.bookingNameId) requireField('#ss-booking');
+    if (!d.bookingName) requireField('#w-booking-name');
 
     return valid;
 }
 
 // ─── STEP 2: Cell Selection ───
 function renderStep2(container, data) {
+    if (!data.selectedCells) data.selectedCells = [];
+
+    function cellCardHTML(cell) {
+        const selected = data.selectedCells.includes(cell.id);
+        const taxRate = TAX_RATES[cell.id] || 0;
+        return `
+            <div class="cs-cell-card ${selected ? 'selected' : ''}" data-cell-id="${cell.id}" style="--cell-color:${cell.color};">
+                <div class="cs-cell-card-top">
+                    <span class="cs-cell-code">${cell.name}</span>
+                    <div class="cs-cell-check ${selected ? 'checked' : ''}">
+                        <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cs-cell-name">${cell.fullName}</div>
+                <div class="cs-cell-details">
+                    <span class="cs-cell-detail">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 2a4 4 0 100 8A4 4 0 008 2zM2 14c0-2.5 2.686-4 6-4s6 1.5 6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        ${cell.employees} employees
+                    </span>
+                    <span class="cs-cell-detail">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1a5 5 0 00-5 5c0 3.5 5 9 5 9s5-5.5 5-9a5 5 0 00-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" fill="currentColor" opacity=".9"/></svg>
+                        VAT ${(taxRate * 100).toFixed(1)}%
+                    </span>
+                </div>
+            </div>
+        `;
+    }
+
+    function footerHTML() {
+        const n = data.selectedCells.length;
+        return n === 0
+            ? `<span class="cs-footer-hint">No subsidiaries selected yet</span>`
+            : `<span class="cs-footer-selected"><strong>${n}</strong> subsidiar${n > 1 ? 'ies' : 'y'} selected: ${data.selectedCells.join(', ')}</span>`;
+    }
+
     container.innerHTML = `
         <div class="wizard-step">
-            <h2>Select Participating Cells</h2>
-            <p class="step-desc">Choose which subsidiaries (cells) are involved in this project. Employees from multiple cells can collaborate on the same invoice.</p>
-            <div class="cells-grid">
-                ${CELLS.map(cell => `
-                    <div class="cell-card ${data.selectedCells.includes(cell.id) ? 'selected' : ''}" data-cell="${cell.id}">
-                        <div class="cell-card-name" style="color: ${cell.color}">${cell.name}</div>
-                        <div class="cell-card-full">${cell.fullName}</div>
-                        <div class="cell-card-meta">
-                            <span>👥 ${cell.employees} employees</span>
-                            <span>📍 ${cell.fullName}</span>
-                            <span>Tax: ${(TAX_RATES[cell.id] * 100).toFixed(1)}%</span>
-                        </div>
-                    </div>
-                `).join('')}
+            <h2>Cell Selection</h2>
+            <p class="step-desc">Select the subsidiaries involved in this invoice.</p>
+            <div class="cs-grid">
+                ${CELLS.map(cellCardHTML).join('')}
             </div>
-            <div class="form-hint" style="text-align:center;margin-top:8px;">
-                ${data.selectedCells.length === 0
-                    ? '⚠️ Select at least one cell to continue'
-                    : `✓ ${data.selectedCells.length} cell(s) selected — employees from these cells will be available in the next step`}
-            </div>
+            <div class="cs-footer" id="cs-footer">${footerHTML()}</div>
         </div>
     `;
 
-    container.querySelectorAll('.cell-card').forEach(card => {
+    function refresh() {
+        container.querySelectorAll('.cs-cell-card').forEach(card => {
+            const id = card.dataset.cellId;
+            const sel = data.selectedCells.includes(id);
+            card.classList.toggle('selected', sel);
+            card.querySelector('.cs-cell-check').classList.toggle('checked', sel);
+        });
+        document.getElementById('cs-footer').innerHTML = footerHTML();
+    }
+
+    container.querySelectorAll('.cs-cell-card').forEach(card => {
         card.addEventListener('click', () => {
-            const cellId = card.dataset.cell;
-            const idx = data.selectedCells.indexOf(cellId);
-            if (idx >= 0) data.selectedCells.splice(idx, 1);
-            else data.selectedCells.push(cellId);
-            renderStep2(container, data);
+            const id = card.dataset.cellId;
+            if (data.selectedCells.includes(id)) {
+                data.selectedCells = data.selectedCells.filter(c => c !== id);
+            } else {
+                data.selectedCells = [...data.selectedCells, id];
+            }
+            refresh();
         });
     });
 }
 
 function saveStep2() {
-    return state.wizard.data.selectedCells.length > 0;
+    if (!state.wizard.data.selectedCells || state.wizard.data.selectedCells.length === 0) {
+        showToast('Please select at least one cell', 'error');
+        return false;
+    }
+    return true;
 }
 
 // ─── STEP 3: Team & Hours ───
 function renderStep3(container, data) {
-    const selectedCells = data.selectedCells;
-    const availableEmployees = EMPLOYEES_DB.filter(e => selectedCells.includes(e.cell));
-
-    // Initialize team entries if empty
-    if (data.teamEntries.length === 0 && availableEmployees.length > 0) {
-        data.teamEntries.push({ employeeId: availableEmployees[0].id, hours: 0 });
+    if (!data.teamEntries) data.teamEntries = [];
+    if (!data.selectedCells || data.selectedCells.length === 0) {
+        container.innerHTML = `<div class="wizard-step"><h2>Team & Hours</h2><p class="step-desc">No cells selected. Please go back and select cells first.</p></div>`;
+        return;
     }
 
-    const cellSections = selectedCells.map(cellId => {
-        const cell = getCellById(cellId);
-        const cellEmployees = availableEmployees.filter(e => e.cell === cellId);
-        const cellEntries = data.teamEntries.filter(te => {
-            const emp = getEmployeeById(te.employeeId);
-            return emp && emp.cell === cellId;
-        });
+    // teamEntries: [{ cellId, employeeId, hours }]
+    // Migrate legacy format (no cellId)
+    data.teamEntries = data.teamEntries
+        .filter(e => data.selectedCells.includes(e.cellId || (EMPLOYEES_DB.find(em => em.id === e.employeeId) || {}).cell))
+        .map(e => {
+            if (!e.cellId) {
+                const emp = EMPLOYEES_DB.find(em => em.id === e.employeeId);
+                return { cellId: emp ? emp.cell : null, employeeId: e.employeeId, hours: e.hours || 0 };
+            }
+            return e;
+        })
+        .filter(e => e.cellId);
 
-        const entryRows = cellEntries.map((entry, idx) => {
-            const emp = getEmployeeById(entry.employeeId);
-            const sen = emp ? getSeniorityById(emp.seniority) : null;
-            const rate = sen ? sen.rate : 0;
-            const total = entry.hours * rate;
-            const globalIdx = data.teamEntries.indexOf(entry);
+    const senLabels = { junior: 'Junior', mid: 'Mid-Level', senior: 'Senior', principal: 'Principal' };
 
-            return `
-                <div class="employee-row" data-index="${globalIdx}">
-                    <div class="employee-info">
-                        <div class="employee-avatar" style="background:${emp?.avatar || '#666'}">${emp ? getInitials(emp.name) : '?'}</div>
-                        <div>
-                            <div class="employee-name">${emp?.name || 'Select employee'}</div>
-                            <div class="employee-cell-tag">${cell.name} · ${sen?.label || '-'}</div>
-                        </div>
-                    </div>
-                    <select class="form-select employee-select" data-idx="${globalIdx}">
-                        <option value="">Select...</option>
-                        ${cellEmployees.map(e => `<option value="${e.id}" ${entry.employeeId === e.id ? 'selected' : ''}>${e.name} (${getSeniorityById(e.seniority).label})</option>`).join('')}
-                    </select>
-                    <span class="rate-display">${data.currency === 'EUR' ? '€' : data.currency === 'USD' ? '$' : data.currency === 'GBP' ? '£' : 'CHF '}${rate}/h</span>
-                    <input type="number" class="form-input hours-input" data-idx="${globalIdx}" min="0" max="999" step="0.5" value="${entry.hours}" placeholder="0">
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="row-total">${formatCurrency(total, data.currency)}</span>
-                        <button class="btn-remove" data-idx="${globalIdx}" title="Remove">×</button>
-                    </div>
-                </div>
-            `;
-        }).join('');
+    function fmt(n) { return n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
-        const cellTotal = cellEntries.reduce((sum, entry) => {
-            const emp = getEmployeeById(entry.employeeId);
-            const sen = emp ? getSeniorityById(emp.seniority) : null;
-            return sum + (entry.hours * (sen ? sen.rate : 0));
-        }, 0);
+    function cellEntries(cellId) {
+        return data.teamEntries.filter(e => e.cellId === cellId);
+    }
 
+    // Ensure each entry has a rate pre-filled from seniority if not set
+    data.teamEntries.forEach(entry => {
+        if (entry.rate == null) {
+            const emp = EMPLOYEES_DB.find(e => e.id === entry.employeeId);
+            const rc = CELL_RATE_CARDS[entry.cellId];
+            entry.rate = emp && rc ? (rc.rates[emp.seniority] || 0) : 0;
+        }
+    });
+
+    function calcEntrySubtotal(entry) {
+        return (entry.rate || 0) * (entry.hours || 0);
+    }
+
+    function calcCellTotal(cellId) {
+        return cellEntries(cellId).reduce((s, e) => s + calcEntrySubtotal(e), 0);
+    }
+
+    function calcCellHours(cellId) {
+        return cellEntries(cellId).reduce((s, e) => s + (e.hours || 0), 0);
+    }
+
+    function totalHours() {
+        return data.teamEntries.reduce((s, e) => s + (e.hours || 0), 0);
+    }
+
+    const SEN_LABELS = { junior: 'Junior', mid: 'Mid-Level', senior: 'Senior', principal: 'Principal' };
+
+    const DISPLAY_AS_OPTIONS = [
+        'Account Management',
+        'Project Management',
+        'Strategy & Consulting',
+        'Software Development',
+        'Design & UX',
+        'Data Analysis',
+        'Marketing',
+        'Legal & Compliance',
+        'Finance & Controlling',
+        'Operations',
+    ];
+
+    // Pre-fill displayAs for entries that don't have it
+    data.teamEntries.forEach(entry => {
+        if (!entry.displayAs) entry.displayAs = 'name';
+    });
+
+    function empOptionsForCell(cellId, selectedEmpId) {
+        const emps = EMPLOYEES_DB.filter(e => e.cell === cellId);
+        return emps.map(e =>
+            `<option value="${e.id}" ${e.id === selectedEmpId ? 'selected' : ''}>${e.name}</option>`
+        ).join('');
+    }
+
+    function serviceOptionsHTML(selected) {
+        return DISPLAY_AS_OPTIONS.map(s =>
+            `<option value="${s}" ${selected === s ? 'selected' : ''}>${s}</option>`
+        ).join('');
+    }
+
+    function entryRowHTML(entry, entryIdx) {
+        const emp = EMPLOYEES_DB.find(e => e.id === entry.employeeId);
+        const rc = CELL_RATE_CARDS[entry.cellId];
+        const symbol = rc ? rc.symbol : 'CHF';
+        const subtotal = calcEntrySubtotal(entry);
+        const initials = emp ? emp.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : '?';
+        const senLabel = emp ? (SEN_LABELS[emp.seniority] || emp.seniority) : '';
+        const isService = entry.displayAs && entry.displayAs !== 'name';
+        const serviceVal = isService ? entry.displayAs : '';
+        const serviceDropdown = isService ? `
+            <select class="form-select th-service-select" data-entry-idx="${entryIdx}">
+                ${serviceOptionsHTML(serviceVal)}
+            </select>` : '';
         return `
-            <div class="cell-section">
-                <div class="cell-section-header">
-                    <h3><span class="cell-badge ${cellId.toLowerCase()}">${cellId}</span> ${cell.fullName}</h3>
-                    <span style="font-weight:700;color:var(--accent);">${formatCurrency(cellTotal, data.currency)}</span>
+            <div class="th-emp-row" data-entry-idx="${entryIdx}">
+                <div class="th-emp-identity">
+                    <div class="th-emp-avatar" style="background:#E5E7EB;color:#6B7280;">${initials}</div>
+                    <div class="th-emp-name-block">
+                        <select class="form-select th-emp-select" data-entry-idx="${entryIdx}">
+                            ${empOptionsForCell(entry.cellId, entry.employeeId)}
+                        </select>
+                        <span class="th-emp-meta">${entry.cellId} · ${senLabel}</span>
+                    </div>
                 </div>
-                <div class="cell-section-body">
-                    ${entryRows}
-                    <div class="add-employee-row">
-                        <button class="btn-add-employee" data-cell="${cellId}">
-                            + Add Employee from ${cellId}
-                        </button>
+                <div class="th-display-col">
+                    <select class="form-select th-display-select" data-entry-idx="${entryIdx}">
+                        <option value="name" ${!isService ? 'selected' : ''}>Display on invoice: Name</option>
+                        <option value="service" ${isService ? 'selected' : ''}>Display on invoice: Service</option>
+                    </select>
+                    ${serviceDropdown}
+                </div>
+                <div class="th-input-wrap">
+                    <input type="number" class="form-input th-rate-input" data-entry-idx="${entryIdx}" min="0" step="1" value="${entry.rate || 0}">
+                    <span class="th-input-suffix">${symbol}</span>
+                </div>
+                <div class="th-input-wrap">
+                    <input type="number" class="form-input th-hours-input" data-entry-idx="${entryIdx}" min="0" step="0.5" value="${entry.hours || 0}" placeholder="0">
+                    <span class="th-input-suffix">hr</span>
+                </div>
+                <span class="th-emp-subtotal">${symbol} ${fmt(subtotal)}</span>
+                <button class="th-remove-btn" data-entry-idx="${entryIdx}" title="Remove">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+                </button>
+            </div>`;
+    }
+
+    function cellBlockHTML(cellId) {
+        const cell = CELLS.find(c => c.id === cellId);
+        const rc = CELL_RATE_CARDS[cellId];
+        const symbol = rc ? rc.symbol : 'CHF';
+        const entries = cellEntries(cellId);
+        const cellTotal = calcCellTotal(cellId);
+        const rows = entries.map(e => entryRowHTML(e, data.teamEntries.indexOf(e))).join('');
+        return `
+            <div class="th-cell-block" data-cell-id="${cellId}">
+                <div class="th-cell-header">
+                    <span class="cell-badge mu">${cellId}</span>
+                    <span class="th-cell-name">${cell ? cell.fullName : cellId}</span>
+                    <span class="th-cell-total">${symbol} <span class="th-cell-total-val" data-cell-id="${cellId}">${fmt(cellTotal)}</span></span>
+                </div>
+                <div class="th-entries">${rows}</div>
+                <div class="th-add-row">
+                    <button class="btn-add-employee th-add-entry" data-cell-id="${cellId}">
+                        + Add Employee from ${cellId}
+                    </button>
+                </div>
+            </div>`;
+    }
+
+    function summaryHTML() {
+        const cur = data.currency || 'CHF';
+        const grandTotal = data.selectedCells.reduce((s, id) => s + calcCellTotal(id), 0);
+        const cellRows = data.selectedCells.map(cellId => {
+            const cell = CELLS.find(c => c.id === cellId);
+            const rc = CELL_RATE_CARDS[cellId];
+            const sub = calcCellTotal(cellId);
+            const hrs = calcCellHours(cellId);
+            return `
+                <div class="th-summary-row">
+                    <span class="th-summary-cell-name" style="color:${cell ? cell.color : 'inherit'}">${cellId}</span>
+                    <span class="th-summary-hrs">${hrs}h</span>
+                    <span class="th-summary-amount">${rc ? rc.symbol : ''}${fmt(sub)}</span>
+                </div>`;
+        }).join('');
+        return `
+            <div class="th-summary-total-hours">
+                <span class="th-summary-label">Total Hours</span>
+                <span class="th-summary-value">${totalHours()}h</span>
+            </div>
+            <div class="th-summary-rows">${cellRows}</div>
+            <div class="th-summary-grand">
+                <span>Subtotal</span>
+                <span>${formatCurrency(grandTotal, cur)}</span>
+            </div>`;
+    }
+
+    function render() {
+        container.innerHTML = `
+            <div class="wizard-step">
+                <h2>Assign Team Members & Hours</h2>
+                <p class="step-desc">Select employees from each participating cell and enter their billable hours. Employees from different cells work together on this project.</p>
+                <div class="th-layout">
+                    <div class="th-blocks">
+                        ${data.selectedCells.map(cellBlockHTML).join('')}
+                    </div>
+                    <div class="th-summary-panel">
+                        <div class="th-summary-header">Hours Summary</div>
+                        <div class="th-summary-body">${summaryHTML()}</div>
                     </div>
                 </div>
             </div>
         `;
-    }).join('');
+        bindEvents();
+    }
 
-    const grandTotal = data.teamEntries.reduce((sum, entry) => {
-        const emp = getEmployeeById(entry.employeeId);
-        const sen = emp ? getSeniorityById(emp.seniority) : null;
-        return sum + (entry.hours * (sen ? sen.rate : 0));
-    }, 0);
-
-    container.innerHTML = `
-        <div class="wizard-step">
-            <h2>Assign Team Members & Hours</h2>
-            <p class="step-desc">Select employees from each participating cell and enter their billable hours. Employees from different cells work together on this project.</p>
-            ${cellSections}
-            <div class="breakdown-mini">
-                <div class="breakdown-row total">
-                    <span class="label">Total Billable Amount</span>
-                    <span class="value">${formatCurrency(grandTotal, data.currency)}</span>
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Event bindings
-    container.querySelectorAll('.employee-select').forEach(sel => {
-        sel.addEventListener('change', (e) => {
-            const idx = parseInt(e.target.dataset.idx);
-            data.teamEntries[idx].employeeId = e.target.value;
-            renderStep3(container, data);
+    function bindEvents() {
+        // Add entry per cell
+        container.querySelectorAll('.th-add-entry').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cellId = btn.dataset.cellId;
+                const firstEmp = EMPLOYEES_DB.find(e => e.cell === cellId);
+                if (firstEmp) {
+                    const rc = CELL_RATE_CARDS[cellId];
+                    const rate = rc ? (rc.rates[firstEmp.seniority] || 0) : 0;
+                    data.teamEntries.push({ cellId, employeeId: firstEmp.id, hours: 1, rate, displayAs: 'name' });
+                    render();
+                }
+            });
         });
-    });
 
-    container.querySelectorAll('.hours-input').forEach(inp => {
-        inp.addEventListener('input', (e) => {
-            const idx = parseInt(e.target.dataset.idx);
-            data.teamEntries[idx].hours = parseFloat(e.target.value) || 0;
-            renderStep3(container, data);
+        // Remove entry
+        container.querySelectorAll('.th-remove-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = parseInt(btn.dataset.entryIdx);
+                data.teamEntries.splice(idx, 1);
+                render();
+            });
         });
-    });
 
-    container.querySelectorAll('.btn-remove').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const idx = parseInt(e.target.dataset.idx);
-            data.teamEntries.splice(idx, 1);
-            renderStep3(container, data);
+        // Employee select
+        container.querySelectorAll('.th-emp-select').forEach(sel => {
+            sel.addEventListener('change', () => {
+                const idx = parseInt(sel.dataset.entryIdx);
+                const entry = data.teamEntries[idx];
+                const emp = EMPLOYEES_DB.find(e => e.id === sel.value);
+                entry.employeeId = sel.value;
+                if (emp) {
+                    const rc = CELL_RATE_CARDS[entry.cellId];
+                    entry.rate = rc ? (rc.rates[emp.seniority] || 0) : 0;
+                }
+                render();
+            });
         });
-    });
 
-    container.querySelectorAll('.btn-add-employee').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const cellId = e.target.dataset.cell;
-            const cellEmps = EMPLOYEES_DB.filter(emp => emp.cell === cellId);
-            if (cellEmps.length > 0) {
-                data.teamEntries.push({ employeeId: cellEmps[0].id, hours: 0 });
-                renderStep3(container, data);
-            }
+        // Display mode select
+        container.querySelectorAll('.th-display-select').forEach(sel => {
+            sel.addEventListener('change', () => {
+                const entry = data.teamEntries[parseInt(sel.dataset.entryIdx)];
+                entry.displayAs = sel.value === 'service' ? DISPLAY_AS_OPTIONS[0] : 'name';
+                render();
+            });
         });
-    });
+
+        // Service label select
+        container.querySelectorAll('.th-service-select').forEach(sel => {
+            sel.addEventListener('change', () => {
+                data.teamEntries[parseInt(sel.dataset.entryIdx)].displayAs = sel.value;
+            });
+        });
+
+        // Rate input — live update subtotal + cell total + summary
+        container.querySelectorAll('.th-rate-input').forEach(inp => {
+            inp.addEventListener('input', () => {
+                const idx = parseInt(inp.dataset.entryIdx);
+                const entry = data.teamEntries[idx];
+                entry.rate = parseFloat(inp.value) || 0;
+                const rc = CELL_RATE_CARDS[entry.cellId];
+                const symbol = rc ? rc.symbol : 'CHF';
+                const row = inp.closest('.th-emp-row');
+                row.querySelector('.th-emp-subtotal').textContent = `${symbol} ${fmt(calcEntrySubtotal(entry))}`;
+                const block = inp.closest('.th-cell-block');
+                block.querySelector('.th-cell-total-val').textContent = fmt(calcCellTotal(entry.cellId));
+                container.querySelector('.th-summary-body').innerHTML = summaryHTML();
+            });
+        });
+
+        // Hours input — live update subtotal + cell total + summary
+        container.querySelectorAll('.th-hours-input').forEach(inp => {
+            inp.addEventListener('input', () => {
+                const idx = parseInt(inp.dataset.entryIdx);
+                const entry = data.teamEntries[idx];
+                entry.hours = parseFloat(inp.value) || 0;
+                const rc = CELL_RATE_CARDS[entry.cellId];
+                const symbol = rc ? rc.symbol : 'CHF';
+                const row = inp.closest('.th-emp-row');
+                row.querySelector('.th-emp-subtotal').textContent = `${symbol} ${fmt(calcEntrySubtotal(entry))}`;
+                const block = inp.closest('.th-cell-block');
+                block.querySelector('.th-cell-total-val').textContent = fmt(calcCellTotal(entry.cellId));
+                container.querySelector('.th-summary-body').innerHTML = summaryHTML();
+            });
+        });
+    }
+
+    render();
 }
 
 function saveStep3() {
-    const validEntries = state.wizard.data.teamEntries.filter(e => e.employeeId && e.hours > 0);
-    return validEntries.length > 0;
+    return true;
 }
 
-// ─── STEP 4: Adjustments ───
+// ─── STEP 4: Sharing Key ───
 function renderStep4(container, data) {
+    if (!data.sharingKey || !data.sharingKey.salesFee) {
+        data.sharingKey = {
+            salesFee:        { entries: [{ cell: data.selectedCells?.[0] || 'ZU', percent: 10 }] },
+            accountOwnerFee: { entries: [{ cell: data.selectedCells?.[0] || 'ZU', percent: 4  }] },
+            groupServicesFee:{ entries: [{ cell: data.selectedCells?.[0] || 'ZU', percent: 3  }] },
+            cellServices:    { entries: [{ cell: data.selectedCells?.[0] || 'ZU', percent: 100 }] },
+        };
+    }
+    const sk = data.sharingKey;
+    const revenue = data.invoiceRevenueForFee || 0;
+    const cur = data.currency || 'CHF';
+
+    const feeTotal = (entries) => entries.reduce((s, e) => s + revenue * (e.percent || 0) / 100, 0);
+    const salesFeeValue       = feeTotal(sk.salesFee.entries);
+    const accountOwnerFeeValue = feeTotal(sk.accountOwnerFee.entries);
+    const groupServicesFeeValue = feeTotal(sk.groupServicesFee.entries);
+    const cellServicesTotalAmount = revenue - salesFeeValue - accountOwnerFeeValue - groupServicesFeeValue;
+
+    const cellOpts = (selected) => CELLS.map(c =>
+        `<option value="${c.id}" ${c.id === selected ? 'selected' : ''}>${c.id} — ${c.fullName}</option>`
+    ).join('');
+
+    const feeEntryRow = (feeKey, entry, idx) => {
+        const indValue = revenue * (entry.percent || 0) / 100;
+        const canRemove = sk[feeKey].entries.length > 1;
+        return `
+            <div class="sk-fee-row" data-fee="${feeKey}" data-idx="${idx}">
+                <div class="sk-fee-cell-col">
+                    <select class="form-select sk-cell-select" data-fee="${feeKey}" data-idx="${idx}">
+                        ${cellOpts(entry.cell)}
+                    </select>
+                </div>
+                <div class="sk-fee-pct-col">
+                    <input type="number" class="form-input sk-percent-input" data-fee="${feeKey}" data-idx="${idx}" step="0.1" min="0" max="100" value="${entry.percent || 0}">
+                    <span class="sk-percent-sign">%</span>
+                </div>
+                <div class="sk-fee-val-col">
+                    <span class="form-input form-input--readonly">${formatCurrency(indValue, cur)}</span>
+                </div>
+                <div class="sk-fee-action-col">
+                    ${canRemove ? `<button class="btn-remove sk-remove-entry" data-fee="${feeKey}" data-idx="${idx}" title="Remove">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h8"/></svg>
+                    </button>` : ''}
+                </div>
+            </div>`;
+    };
+
+    const cellServiceRow = (entry, idx) => {
+        const indValue = cellServicesTotalAmount * (entry.percent || 0) / 100;
+        const canRemove = sk.cellServices.entries.length > 1;
+        return `
+            <div class="sk-fee-row" data-fee="cellServices" data-idx="${idx}">
+                <div class="sk-fee-cell-col">
+                    <select class="form-select sk-cell-select" data-fee="cellServices" data-idx="${idx}">
+                        ${cellOpts(entry.cell)}
+                    </select>
+                </div>
+                <div class="sk-fee-pct-col">
+                    <input type="number" class="form-input sk-percent-input" data-fee="cellServices" data-idx="${idx}" step="0.1" min="0" max="100" value="${entry.percent || 0}">
+                    <span class="sk-percent-sign">%</span>
+                </div>
+                <div class="sk-fee-val-col">
+                    <span class="form-input form-input--readonly">${formatCurrency(indValue, cur)}</span>
+                </div>
+                <div class="sk-fee-action-col">
+                    ${canRemove ? `<button class="btn-remove sk-remove-entry" data-fee="cellServices" data-idx="${idx}" title="Remove">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h8"/></svg>
+                    </button>` : ''}
+                </div>
+            </div>`;
+    };
+
+    const feeSection = (badge, label, feeKey, value, rows) => `
+        <div class="cell-section">
+            <div class="cell-section-header">
+                <h3><span class="cell-badge mu">${badge}</span> ${label}</h3>
+                <span class="sk-share-value">${formatCurrency(value, cur)}</span>
+            </div>
+            <div class="cell-section-body">
+                <div class="sk-fee-grid">
+                    <div class="sk-fee-row sk-fee-header-row">
+                        <div class="sk-fee-cell-col">Cell</div>
+                        <div class="sk-fee-pct-col">Percent</div>
+                        <div class="sk-fee-val-col">Ind. Value</div>
+                        <div class="sk-fee-action-col"></div>
+                    </div>
+                    ${rows}
+                </div>
+                <div class="add-employee-row">
+                    <button class="btn-add-employee sk-add-entry" data-fee="${feeKey}">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg>
+                        Add cell
+                    </button>
+                </div>
+            </div>
+        </div>`;
+
+    container.innerHTML = `
+        <div class="wizard-step">
+            <h2>Sharing Key</h2>
+            <p class="step-desc">Distribute the invoice revenue across cells and fee types.</p>
+
+            <div class="sk-revenue-banner">
+                <div class="sk-revenue-left">
+                    <span class="sk-revenue-label">Revenue for fee calculation</span>
+                    <span class="sk-revenue-value">${formatCurrency(revenue, cur)}</span>
+                </div>
+            </div>
+
+            ${feeSection('C', 'Sales Fee', 'salesFee', salesFeeValue,
+                sk.salesFee.entries.map((e, i) => feeEntryRow('salesFee', e, i)).join(''))}
+            ${feeSection('D', 'Account Owner Fee', 'accountOwnerFee', accountOwnerFeeValue,
+                sk.accountOwnerFee.entries.map((e, i) => feeEntryRow('accountOwnerFee', e, i)).join(''))}
+            ${feeSection('E', 'Group Services Fee', 'groupServicesFee', groupServicesFeeValue,
+                sk.groupServicesFee.entries.map((e, i) => feeEntryRow('groupServicesFee', e, i)).join(''))}
+            ${feeSection('B', 'Cell Services', 'cellServices', cellServicesTotalAmount,
+                sk.cellServices.entries.map((e, i) => cellServiceRow(e, i)).join(''))}
+        </div>
+    `;
+
+    // Cell select
+    container.querySelectorAll('.sk-cell-select').forEach(sel => {
+        sel.addEventListener('change', () => {
+            const fee = sel.dataset.fee;
+            const idx = parseInt(sel.dataset.idx);
+            sk[fee].entries[idx].cell = sel.value;
+        });
+    });
+
+    // Percent input — full re-render so values update
+    container.querySelectorAll('.sk-percent-input').forEach(inp => {
+        inp.addEventListener('input', () => {
+            sk[inp.dataset.fee].entries[parseInt(inp.dataset.idx)].percent = parseFloat(inp.value) || 0;
+            renderStep4(container, data);
+        });
+    });
+
+    // Add entry
+    container.querySelectorAll('.sk-add-entry').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const fee = btn.dataset.fee;
+            sk[fee].entries.push({ cell: data.selectedCells?.[0] || 'ZU', percent: 0 });
+            renderStep4(container, data);
+        });
+    });
+
+    // Remove entry
+    container.querySelectorAll('.sk-remove-entry').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const fee = btn.dataset.fee;
+            const idx = parseInt(btn.dataset.idx);
+            sk[fee].entries.splice(idx, 1);
+            renderStep4(container, data);
+        });
+    });
+}
+
+function saveStep4() {
+    return true;
+}
+
+// ─── (removed old Adjustments step — now handled in Step 4: Sharing Key) ───
+function renderStep4_unused(container, data) {
     const subtotal = calcSubtotal(data);
     const selectedCells = data.selectedCells;
 
@@ -1263,112 +1763,240 @@ function renderStep4(container, data) {
     $('#w-notes').addEventListener('input', () => { data.notes = $('#w-notes').value; });
 }
 
-function saveStep4() {
-    const d = state.wizard.data;
-    d.applyTax = $('#w-apply-tax').checked;
-    d.taxCell = $('#w-tax-cell')?.value || d.selectedCells[0];
-    d.discountType = $('#w-discount-type').value;
-    d.discountValue = parseFloat($('#w-discount-value')?.value) || 0;
-    d.rushSurcharge = $('#w-rush').checked;
-    d.crossCellFee = $('#w-cross-cell')?.checked || false;
-    d.paymentTerms = $('#w-payment-terms')?.value || 'net30';
-    d.notes = $('#w-notes')?.value || '';
-    return true;
-}
 
 // ─── STEP 5: Review ───
 function renderStep5(container, data) {
-    const client = getClientById(data.clientId);
-    const subtotal = calcSubtotal(data);
-    const selectedCells = data.selectedCells;
-    const taxRate = data.applyTax ? (TAX_RATES[data.taxCell] || 0) : 0;
-    const crossCellFeeAmount = data.crossCellFee && selectedCells.length > 1 ? subtotal * 0.05 : 0;
-    const rushAmount = data.rushSurcharge ? subtotal * 0.15 : 0;
-    const discountAmount = calcDiscount(data, subtotal);
-    const taxableAmount = subtotal + crossCellFeeAmount + rushAmount - discountAmount;
-    const taxAmount = taxableAmount * taxRate;
-    const total = taxableAmount + taxAmount;
+    const cur = data.currency || 'CHF';
+    const fmt = (v) => formatCurrency(v, cur);
 
-    const totalHours = data.teamEntries.reduce((s, e) => s + e.hours, 0);
+    // Invoice total breakdown
+    const totalInvoice = data.totalAmountInvoiced || 0;
+    const thirdPartyTotal = data.thirdPartyServices.reduce((s, svc) => s + (svc.amount || 0), 0);
+    const expensesTravel = data.expensesTravelMaterial || 0;
+    const revenue = data.invoiceRevenueForFee || 0;
+    const expOutVAT = data.expensesOutsideVAT || 0;
+    const reimb = data.reimbursementsSkonto || 0;
+    const net = data.invoiceToCustomerNET || 0;
 
-    const teamRows = data.teamEntries.filter(e => e.employeeId && e.hours > 0).map(entry => {
-        const emp = getEmployeeById(entry.employeeId);
-        const sen = emp ? getSeniorityById(emp.seniority) : null;
-        const rate = sen ? sen.rate : 0;
-        return `
-            <tr>
-                <td>
-                    <div class="employee-info">
-                        <div class="employee-avatar" style="background:${emp?.avatar || '#666'};width:28px;height:28px;font-size:0.65rem;">${emp ? getInitials(emp.name) : '?'}</div>
-                        <span>${emp?.name || 'Unknown'}</span>
-                    </div>
-                </td>
-                <td><span class="cell-badge ${(emp?.cell || '').toLowerCase()}">${emp?.cell || '-'}</span></td>
-                <td>${sen?.label || '-'}</td>
-                <td>${formatCurrency(rate, data.currency)}/h</td>
-                <td>${entry.hours}h</td>
-                <td><strong>${formatCurrency(entry.hours * rate, data.currency)}</strong></td>
-            </tr>
-        `;
-    }).join('');
+    // Fee calculations from sharing key
+    const sk = data.sharingKey || {
+        salesFee:        { entries: [{ cell: 'ZU', percent: 10 }] },
+        accountOwnerFee: { entries: [{ cell: 'ZU', percent: 4  }] },
+        groupServicesFee:{ entries: [{ cell: 'ZU', percent: 3  }] },
+        cellServices:    { entries: [{ cell: 'ZU', percent: 100}] },
+    };
+    const feeTot = (entries) => entries.reduce((s, e) => s + revenue * (e.percent || 0) / 100, 0);
+    const salesFeePct      = sk.salesFee.entries.reduce((s, e) => s + (e.percent || 0), 0);
+    const accountOwnerPct  = sk.accountOwnerFee.entries.reduce((s, e) => s + (e.percent || 0), 0);
+    const groupServicesPct = sk.groupServicesFee.entries.reduce((s, e) => s + (e.percent || 0), 0);
+    const salesFeeVal      = feeTot(sk.salesFee.entries);
+    const accountOwnerVal  = feeTot(sk.accountOwnerFee.entries);
+    const groupServicesVal = feeTot(sk.groupServicesFee.entries);
+    const cellServicesTotal = revenue - salesFeeVal - accountOwnerVal - groupServicesVal;
+    const cellServicesVal  = cellServicesTotal;
+
+    // Proportional widths for the diagram (relative to totalInvoice)
+    const total = totalInvoice || 1;
+    const pct3rd = (thirdPartyTotal / total * 100);
+    const pctExp = ((expensesTravel + reimb) / total * 100);
+    const pctRevenue = 100 - pct3rd - pctExp;
+
+    // Fee bands as % of revenue height area
+    const revH = revenue || 1;
+    const pctGroupFee = groupServicesVal / revH * 100;
+    const pctAcctFee = accountOwnerVal / revH * 100;
+    const pctSalesFee = salesFeeVal / revH * 100;
+    const pctCellArea = 100 - pctGroupFee - pctAcctFee - pctSalesFee;
+
+    // Cell services entries for the bottom blocks
+    const cellEntries = sk.cellServices.entries.filter(e => e.cell);
+    const cellPctTotal = cellEntries.reduce((s, e) => s + (e.percent || 0), 0) || 1;
 
     container.innerHTML = `
         <div class="wizard-step">
-            <h2>Review & Confirm</h2>
-            <p class="step-desc">Please review all the details before creating the invoice.</p>
-            <div class="review-grid">
-                <div>
-                    <div class="review-section">
-                        <h3>📋 Project Details</h3>
-                        <div class="review-row"><span class="label">Invoice Number</span><span class="value">${data.invoiceNumber}</span></div>
-                        <div class="review-row"><span class="label">Customer</span><span class="value">${client?.name || '-'}</span></div>
-                        <div class="review-row"><span class="label">Project</span><span class="value">${data.projectName}</span></div>
-                        <div class="review-row"><span class="label">Invoicing Cell</span><span class="value">${getCellById(data.invoicingCell)?.name || '-'} — ${getCellById(data.invoicingCell)?.fullName || '-'}</span></div>
-                        <div class="review-row"><span class="label">Project Manager</span><span class="value">${getEmployeeById(data.projectManagerId)?.name || '-'}</span></div>
-                        <div class="review-row"><span class="label">Booking Date</span><span class="value">${data.bookingDate || '-'}</span></div>
-                        <div class="review-row"><span class="label">Booking Name</span><span class="value">${getEmployeeById(data.bookingNameId)?.name || '-'}</span></div>
-                        <div class="review-row"><span class="label">Type</span><span class="value">${data.projectType.replace('-', ' & ').replace(/\b\w/g, l => l.toUpperCase())}</span></div>
-                        <div class="review-row"><span class="label">Billing Period</span><span class="value">${data.billingPeriodStart || '-'} → ${data.billingPeriodEnd || '-'}</span></div>
-                        <div class="review-row"><span class="label">Cells Involved</span><span class="value">
-                            <div class="cell-badges">${selectedCells.map(c => `<span class="cell-badge ${c.toLowerCase()}">${c}</span>`).join('')}</div>
-                        </span></div>
-                        <div class="review-row"><span class="label">Payment Terms</span><span class="value">${data.paymentTerms.replace('net', 'Net ').replace('immediate', 'Due on Receipt')}</span></div>
-                        ${data.description ? `<div class="review-row" style="flex-direction:column;gap:6px;"><span class="label">Description</span><span class="value" style="font-weight:400;color:var(--text-secondary);font-size:0.88rem;">${data.description}</span></div>` : ''}
+            <h2>Summary</h2>
+            <p class="step-desc">Summary of calculated values to be distributed to the cells.</p>
+
+            <div class="rv-total-label">Invoice Total: <strong>${fmt(totalInvoice)}</strong></div>
+
+            <div class="rv-diagram">
+                <!-- Left columns: 3rd parties + expenses -->
+                ${pct3rd > 0 ? `
+                <div class="rv-col rv-col--side" style="flex: ${pct3rd};">
+                    <div class="rv-block rv-block--3rd"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "3rd Party Services",
+                            total: thirdPartyTotal,
+                            rows: data.thirdPartyServices.filter(s => s.amount > 0).length > 1
+                                ? data.thirdPartyServices.filter(s => s.amount > 0).map(s => ({ label: s.providerName || "Provider", value: s.amount }))
+                                : []
+                        })}'>
+                        <span class="rv-block-label">3rd parties</span>
                     </div>
-                    <div class="review-section">
-                        <h3>👥 Team Allocation (${totalHours}h total)</h3>
-                        <table class="review-team-table">
-                            <thead>
-                                <tr><th>Employee</th><th>Cell</th><th>Level</th><th>Rate</th><th>Hours</th><th>Subtotal</th></tr>
-                            </thead>
-                            <tbody>${teamRows}</tbody>
-                        </table>
-                    </div>
-                    ${data.notes ? `
-                    <div class="review-section">
-                        <h3>📝 Notes</h3>
-                        <p style="color:var(--text-secondary);font-size:0.9rem;">${data.notes}</p>
-                    </div>` : ''}
                 </div>
-                <div>
-                    <div class="summary-card">
-                        <h3>Invoice Summary</h3>
-                        <div class="breakdown-row"><span class="label">Subtotal</span><span class="value">${formatCurrency(subtotal, data.currency)}</span></div>
-                        ${crossCellFeeAmount > 0 ? `<div class="breakdown-row"><span class="label">Cross-Cell Fee (5%)</span><span class="value">+${formatCurrency(crossCellFeeAmount, data.currency)}</span></div>` : ''}
-                        ${rushAmount > 0 ? `<div class="breakdown-row"><span class="label">Rush Surcharge (15%)</span><span class="value">+${formatCurrency(rushAmount, data.currency)}</span></div>` : ''}
-                        ${discountAmount > 0 ? `<div class="breakdown-row"><span class="label">Discount</span><span class="value" style="color:var(--success);">-${formatCurrency(discountAmount, data.currency)}</span></div>` : ''}
-                        ${data.applyTax ? `<div class="breakdown-row"><span class="label">Tax (${(taxRate*100).toFixed(1)}%)</span><span class="value">+${formatCurrency(taxAmount, data.currency)}</span></div>` : ''}
-                        <div class="summary-total">
-                            <div class="amount">${formatCurrency(total, data.currency)}</div>
-                            <div class="label">Total Amount</div>
-                        </div>
-                        <div class="breakdown-row mt-2"><span class="label">Invoice #</span><span class="value">${generateInvoiceNumber()}</span></div>
-                        <div class="breakdown-row"><span class="label">Issue Date</span><span class="value">${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span></div>
+                ` : ''}
+
+                ${pctExp > 0 ? `
+                <div class="rv-col rv-col--side" style="flex: ${pctExp};">
+                    <div class="rv-block rv-block--exp"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Expenses",
+                            total: expensesTravel + reimb,
+                            rows: [
+                                ...(expensesTravel > 0 ? [{ label: "Travel & Material", value: expensesTravel }] : []),
+                                ...(reimb > 0 ? [{ label: "Reimbursements/Skonto", value: reimb }] : [])
+                            ].filter((_, __, arr) => arr.length > 1)
+                        })}'>
+                        <span class="rv-block-label">expenses</span>
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- Revenue column (main) -->
+                <div class="rv-col rv-col--revenue" style="flex: ${pctRevenue};">
+                    <!-- Fee bands at the top -->
+                    <div class="rv-fee-band rv-fee-band--group" style="flex: ${pctGroupFee};"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Group Services Fee",
+                            total: groupServicesVal,
+                            rows: sk.groupServicesFee.entries.length > 1 ? sk.groupServicesFee.entries.map(e => ({ label: e.cell + " (" + e.percent + "%)", value: revenue * e.percent / 100 })) : []
+                        })}'>
+                        <span class="rv-fee-label">Group Services Fee ${groupServicesPct}%</span>
+                    </div>
+                    <div class="rv-fee-band rv-fee-band--account" style="flex: ${pctAcctFee};"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Account Owner Fee",
+                            total: accountOwnerVal,
+                            rows: sk.accountOwnerFee.entries.length > 1 ? sk.accountOwnerFee.entries.map(e => ({ label: e.cell + " (" + e.percent + "%)", value: revenue * e.percent / 100 })) : []
+                        })}'>
+                        <span class="rv-fee-label">Account Owner Fee ${accountOwnerPct}%</span>
+                    </div>
+                    <div class="rv-fee-band rv-fee-band--sales" style="flex: ${pctSalesFee};"
+                        data-rv-tooltip='${JSON.stringify({
+                            title: "Sales Fee",
+                            total: salesFeeVal,
+                            rows: sk.salesFee.entries.length > 1 ? sk.salesFee.entries.map(e => ({ label: e.cell + " (" + e.percent + "%)", value: revenue * e.percent / 100 })) : []
+                        })}'>
+                        <span class="rv-fee-label">Sales Fee ${salesFeePct}%</span>
+                    </div>
+
+                    <!-- Cell Services area -->
+                    <div class="rv-cells-area" style="flex: ${pctCellArea};">
+                        ${cellEntries.map(e => {
+                            const cellObj = getCellById(e.cell);
+                            const entryPct = (e.percent || 0);
+                            const entryVal = cellServicesTotal * entryPct / 100;
+                            return `
+                                <div class="rv-cell-block" style="flex: ${entryPct || 1};"
+                                    data-rv-tooltip='${JSON.stringify({ title: (cellObj?.fullName || e.cell), total: entryVal, rows: [] })}'>
+                                    <span class="rv-cell-label">${e.cell}</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="rv-legend">
+                <div class="rv-legend-item">
+                    <span class="rv-legend-swatch rv-legend-swatch--3rd"></span>
+                    <span>3rd Parties</span>
+                    <span class="rv-legend-val">${fmt(thirdPartyTotal)}</span>
+                </div>
+                <div class="rv-legend-item">
+                    <span class="rv-legend-swatch rv-legend-swatch--exp"></span>
+                    <span>Expenses</span>
+                    <span class="rv-legend-val">${fmt(expensesTravel + reimb)}</span>
+                </div>
+                <div class="rv-legend-item">
+                    <span class="rv-legend-swatch rv-legend-swatch--group"></span>
+                    <span>Group Services Fee ${groupServicesPct}%</span>
+                    <span class="rv-legend-val">${fmt(groupServicesVal)}</span>
+                </div>
+                <div class="rv-legend-item">
+                    <span class="rv-legend-swatch rv-legend-swatch--account"></span>
+                    <span>Account Owner Fee ${accountOwnerPct}%</span>
+                    <span class="rv-legend-val">${fmt(accountOwnerVal)}</span>
+                </div>
+                <div class="rv-legend-item">
+                    <span class="rv-legend-swatch rv-legend-swatch--sales"></span>
+                    <span>Sales Fee ${salesFeePct}%</span>
+                    <span class="rv-legend-val">${fmt(salesFeeVal)}</span>
+                </div>
+                <div class="rv-legend-item">
+                    <span class="rv-legend-swatch rv-legend-swatch--cell"></span>
+                    <span>Cell Services</span>
+                    <span class="rv-legend-val">${fmt(cellServicesVal)}</span>
+                </div>
+            </div>
+
+            <!-- Financial summary card -->
+            <div class="cell-section" style="margin-top: 32px;">
+                <div class="cell-section-header">
+                    <h3>Financial Summary</h3>
+                </div>
+                <div class="cell-section-body">
+                    <div class="rv-summary-grid">
+                        <div class="rv-sum-row"><span>Invoice Total</span><span>${fmt(totalInvoice)}</span></div>
+                        <div class="rv-sum-row"><span>Expenses outside VAT</span><span>${fmt(expOutVAT)}</span></div>
+                        <div class="rv-sum-row"><span>Invoice to Customer inkl. VAT</span><span>${fmt(data.invoiceToCustomerInklVAT || 0)}</span></div>
+                        <div class="rv-sum-row"><span>VAT Amount (${data.vatPercent || 0}%)</span><span>${fmt(data.vatAmount || 0)}</span></div>
+                        <div class="rv-sum-row"><span>Invoice to Customer NET</span><span>${fmt(net)}</span></div>
+                        <div class="rv-sum-row"><span>Expenses, Travel + Material</span><span>${fmt(expensesTravel)}</span></div>
+                        <div class="rv-sum-row"><span>3rd Party Services</span><span>${fmt(thirdPartyTotal)}</span></div>
+                        <div class="rv-sum-row"><span>Reimbursements, Skonto</span><span>${fmt(reimb)}</span></div>
+                        <div class="rv-sum-row rv-sum-row--highlight"><span>Invoice Revenue for Fee Calculation</span><span>${fmt(revenue)}</span></div>
                     </div>
                 </div>
             </div>
         </div>
     `;
+
+    // Rich JS tooltip for diagram blocks
+    let rvTip = document.getElementById('rv-rich-tooltip');
+    if (!rvTip) {
+        rvTip = document.createElement('div');
+        rvTip.id = 'rv-rich-tooltip';
+        rvTip.className = 'rv-rich-tooltip';
+        document.body.appendChild(rvTip);
+    }
+
+    const fmtVal = (v) => formatCurrency(v, cur);
+
+    container.querySelectorAll('[data-rv-tooltip]').forEach(el => {
+        el.addEventListener('mouseenter', (e) => {
+            try {
+                const d = JSON.parse(el.dataset.rvTooltip);
+                let html = `<div class="rv-tip-title">${d.title}</div>`;
+                if (d.rows && d.rows.length > 0) {
+                    html += `<div class="rv-tip-rows">`;
+                    d.rows.forEach(r => {
+                        html += `<div class="rv-tip-row"><span class="rv-tip-label">${r.label}</span><span class="rv-tip-val">${fmtVal(r.value)}</span></div>`;
+                    });
+                    html += `</div><div class="rv-tip-total"><span>Total</span><span>${fmtVal(d.total)}</span></div>`;
+                } else {
+                    html += `<div class="rv-tip-total"><span>${fmtVal(d.total)}</span></div>`;
+                }
+                rvTip.innerHTML = html;
+                rvTip.style.display = 'block';
+            } catch(err) {}
+        });
+        el.addEventListener('mousemove', (e) => {
+            const pad = 14;
+            const tw = rvTip.offsetWidth;
+            const th = rvTip.offsetHeight;
+            let x = e.clientX + pad;
+            let y = e.clientY - th - pad;
+            if (x + tw > window.innerWidth - 8) x = e.clientX - tw - pad;
+            if (y < 8) y = e.clientY + pad;
+            rvTip.style.left = x + 'px';
+            rvTip.style.top  = y + 'px';
+        });
+        el.addEventListener('mouseleave', () => {
+            rvTip.style.display = 'none';
+        });
+    });
 }
 
 // ──────────────────────────────────────────
@@ -1405,10 +2033,11 @@ function calcTotal(data) {
 // ──────────────────────────────────────────
 function nextStep() {
     const step = state.wizard.currentStep;
+    // Step 1: saveStep1, Step 2: saveStep2 (Cell Selection), Step 3: saveStep3 (Team & Hours), Step 4: saveStep4 (Sharing Key), Step 5: Summary
     const validators = [null, saveStep1, saveStep2, saveStep3, saveStep4, null];
 
     if (step === 5) {
-        // Create invoice
+        // Create invoice on final step
         createInvoice();
         return;
     }
@@ -1424,9 +2053,8 @@ function nextStep() {
 
 function prevStep() {
     const step = state.wizard.currentStep;
-    // save current state silently
-    if (step === 4) saveStep4();
     state.wizard.currentStep = Math.max(1, step - 1);
+
     renderWizardStep();
 }
 

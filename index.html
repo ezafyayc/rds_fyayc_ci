@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Wizard — Multi-Cell Billing Platform</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- TTNorms font: place TTNormsProRegular.woff2, TTNormsProMedium.woff2,
+         TTNormsProBold.woff2 in a /fonts/ folder next to this file -->
+    <style>
+        @font-face {
+            font-family: 'TTNorms';
+            src: url('fonts/TTNormsProLight.woff2') format('woff2'),
+                 url('fonts/TTNormsProLight.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'TTNorms';
+            src: url('fonts/TTNormsProRegular.woff2') format('woff2'),
+                 url('fonts/TTNormsProRegular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'TTNorms';
+            src: url('fonts/TTNormsProMedium.woff2') format('woff2'),
+                 url('fonts/TTNormsProMedium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'TTNorms';
+            src: url('fonts/TTNormsProDemiBold.woff2') format('woff2'),
+                 url('fonts/TTNormsProDemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'TTNorms';
+            src: url('fonts/TTNormsProBold.woff2') format('woff2'),
+                 url('fonts/TTNormsProBold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'TTNorms';
+            src: url('fonts/TTNormsProExtraBold.woff2') format('woff2'),
+                 url('fonts/TTNormsProExtraBold.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,10 +67,10 @@
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                         <rect width="28" height="28" rx="8" fill="url(#logoGrad)"/>
                         <path d="M8 10h12M8 14h8M8 18h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                        <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+                        <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#2AA294"/><stop offset="1" stop-color="#1F7A6E"/></linearGradient></defs>
                     </svg>
                 </div>
-                <span class="logo-text">InvoiceHub</span>
+                <span class="logo-text">RDS</span>
             </div>
             <nav class="sidebar-nav">
                 <div class="nav-section-label">Menu</div>
@@ -31,10 +81,6 @@
                 <a href="#" class="nav-item" id="nav-invoices">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 6h6M7 10h6M7 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     Invoices
-                </a>
-                <a href="#" class="nav-item" id="nav-new-invoice">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5v7M6.5 10h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    Create Invoice
                 </a>
                 <a href="#" class="nav-item" id="nav-subsidiaries">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 18V4a1 1 0 011-1h5v15M9 3h7a1 1 0 011 1v14H3" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 6h1M6 9h1M6 12h1M12 6h1M12 9h1M12 12h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -56,6 +102,10 @@
                 <a href="#" class="nav-item" id="nav-settings">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.5"/><path d="M13.76 2.15l.47 2.02c.27.1.53.22.78.36l1.9-.82 1.76 1.04-.53 2a6.1 6.1 0 0 1 .42.72l2.02.46v2.14l-2.02.47a6 6 0 0 1-.42.72l.53 2-1.76 1.04-1.9-.82c-.25.14-.51.26-.78.36l-.47 2.02h-3.52l-.47-2.02a6 6 0 0 1-.78-.36l-1.9.82-1.76-1.04.53-2a6 6 0 0 1-.42-.72L3.42 14.1v-2.14l2.02-.46c.12-.25.26-.49.42-.72l-.53-2 1.76-1.04 1.9.82c.25-.14.51-.26.78-.36l.47-2.02h3.52Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
                     Settings
+                </a>
+                <a href="#" class="nav-item" id="nav-new-invoice">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5v7M6.5 10h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    Create Invoice
                 </a>
             </nav>
             <div class="mode-switcher" id="mode-switcher">
@@ -185,7 +235,7 @@
                         <div class="steps-indicators">
                             <div class="step-indicator active" data-step="1">
                                 <div class="step-dot"><span>1</span></div>
-                                <span class="step-label">Customer & Project</span>
+                                <span class="step-label">Account and Invoice Information</span>
                             </div>
                             <div class="step-indicator" data-step="2">
                                 <div class="step-dot"><span>2</span></div>
@@ -197,11 +247,11 @@
                             </div>
                             <div class="step-indicator" data-step="4">
                                 <div class="step-dot"><span>4</span></div>
-                                <span class="step-label">Adjustments</span>
+                                <span class="step-label">Sharing Key</span>
                             </div>
                             <div class="step-indicator" data-step="5">
                                 <div class="step-dot"><span>5</span></div>
-                                <span class="step-label">Review</span>
+                                <span class="step-label">Summary</span>
                             </div>
                         </div>
                     </div>
@@ -220,11 +270,14 @@
                     <div class="step-counter">
                         Step <span id="current-step-num">1</span> of 5
                     </div>
-                    <button class="btn btn-primary" id="btn-next">
-                        Next
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
+                    <div class="wizard-nav-right">
+                        <button class="btn btn-primary" id="btn-next">
+                            Next
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Rate Cards View -->
